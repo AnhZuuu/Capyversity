@@ -1,0 +1,13 @@
+.nav {
+    align-items: center;
+}
+
+.list {
+    list-style: none !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    background-color: #bcbdbc;
+    align-items: center;
+
+
+}
