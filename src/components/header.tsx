@@ -6,23 +6,23 @@ import { Menu } from 'antd';
 import Link from 'next/link';
 
 
-const items: MenuProps['items'] = [
-    {
-        label: <Link href={"/"}>School</Link>,
-        key: 'homepage',
-        // icon: <MailOutlined />,
-    },
-    {
-        label: <Link href={"/users"}>News</Link>,
-        key: 'users',
-        // icon: <MailOutlined />,
-    },
-    {
-        label: <Link href={"/blogs"}>Blog</Link>,
-        key: 'blogs',
-        // icon: <AppstoreOutlined />,
-        //disabled: true,
-    },
+// const items: MenuProps['items'] = [
+//     {
+//         label: <Link href={"/"}>School</Link>,
+//         key: 'homepage',
+//         // icon: <MailOutlined />,
+//     },
+//     {
+//         label: <Link href={"/users"}>News</Link>,
+//         key: 'users',
+//         // icon: <MailOutlined />,
+//     },
+//     {
+//         label: <Link href={"/blogs"}>Blog</Link>,
+//         key: 'blogs',
+//         // icon: <AppstoreOutlined />,
+//         //disabled: true,
+//     },
     //   {
     //     label: 'Navigation Three - Submenu',
     //     key: 'SubMenu',
@@ -59,7 +59,7 @@ const items: MenuProps['items'] = [
     //     ],
     //   },
 
-];
+// ];
 
 const Header: React.FC = () => {
     const [current, setCurrent] = useState('homepage');
@@ -73,7 +73,7 @@ const Header: React.FC = () => {
         <div style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', backgroundColor:'#2596be', padding:'5px', fontSize:'40px'}}>
             <Link
 
-                href='/'
+                href='/users'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-transparent rounded-lg hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
             >
                 About us
@@ -82,27 +82,24 @@ const Header: React.FC = () => {
                 style={{ display: 'flex', justifyContent: 'space-evenly' }}
             /> */}
             <div>
-            <Link
-                href='/'
+            <Link href='/'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-transparent rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
             >
                 SCHOOL
             </Link>
-            <Link
-                href='/'
+            <Link href='/users'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-transparent rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
             >
                 NEWS
             </Link>
-            <Link
-                href='/'
+            <Link href='/blogs'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-transparent rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
             >
                 BLOG
             </Link>
             </div>
             <Link
-                href='/'
+                href='/blogs'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-white rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
             >
                 CONSULTANCY
