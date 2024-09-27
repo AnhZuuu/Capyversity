@@ -8,19 +8,19 @@ import Link from 'next/link';
 
 const items: MenuProps['items'] = [
     {
-        label: <Link href={"/"}>Home</Link>,
+        label: <Link href={"/"}>School</Link>,
         key: 'homepage',
-        icon: <MailOutlined />,
+        // icon: <MailOutlined />,
     },
     {
-        label: <Link href={"/users"}>Manage Users</Link>,
+        label: <Link href={"/users"}>News</Link>,
         key: 'users',
-        icon: <MailOutlined />,
+        // icon: <MailOutlined />,
     },
     {
-        label: <Link href={"/blogs"}>Manage Blogs</Link>,
+        label: <Link href={"/blogs"}>Blog</Link>,
         key: 'blogs',
-        icon: <AppstoreOutlined />,
+        // icon: <AppstoreOutlined />,
         //disabled: true,
     },
     //   {
@@ -70,10 +70,45 @@ const Header: React.FC = () => {
     };
 
     return <>
-        <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items}  
-        style={{ display: 'flex', justifyContent: 'space-around' }}
-        />
-        </>;
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', backgroundColor:'#2596be', padding:'5px', fontSize:'40px'}}>
+            <Link
+
+                href='/'
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-transparent rounded-lg hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
+            >
+                About us
+            </Link>
+            {/* <Menu onClick={onClick} selectedKeys={[current]} mode="vertical" items={items}
+                style={{ display: 'flex', justifyContent: 'space-evenly' }}
+            /> */}
+            <div>
+            <Link
+                href='/'
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-transparent rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
+            >
+                SCHOOL
+            </Link>
+            <Link
+                href='/'
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-transparent rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
+            >
+                NEWS
+            </Link>
+            <Link
+                href='/'
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-transparent rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
+            >
+                BLOG
+            </Link>
+            </div>
+            <Link
+                href='/'
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-white rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
+            >
+                CONSULTANCY
+            </Link>
+        </div>
+    </>;
 };
 
 export default Header;
