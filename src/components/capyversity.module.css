@@ -5,6 +5,7 @@
 .list {
     list-style: none !important;
     display: flex !important;
+    flex-wrap: wrap;
     justify-content: space-around !important;
     background-color: #383434;
     align-items: center;

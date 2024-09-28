@@ -1,44 +1,14 @@
-import BlogsTable from "@/components/blogs/blogs.table";
+import React from 'react'
+import Blogs from '@/components/blogs/blogs'
 
-const calculatePagesCount = (pageSize: number, totalCount: number) => {
-    //nếu có 0 items thì vẫn có 1 page
-    return totalCount < pageSize ? 1 : Math.ceil(totalCount / pageSize);
-}
-
-const BlogsPage = async (props: any) => {
-    const LIMIT = 2;
-    const page = props?.searchParams?.page ?? 1;
-
-    const res = await fetch(
-        `http://localhost:8000/blogs?_page=${page}&_limit=${LIMIT}`,
-        {
-            method: "GET"
-        }
-    );
-
-    //tính tổng số blogs từ header
-    const total_items = +(res.headers?.get("X-Total-Count") ?? 0)
-    //tính tổng total pages
-    const totalPages = calculatePagesCount(LIMIT, total_items);
-    const data = await res.json();
-    console.log("check", props);
-
-
-    return (
-        <div>
-            <BlogsTable
-                blogs={data ? data : []}
-                meta={
-                    {
-                        current: +page,
-                        pageSize: LIMIT,
-                        total: total_items
-                    }
-                }
-            />
+export default function BlogPage() {
+  return (
+    <nav style={{backgroundColor: '#383434'}}>
+        <div style={{textAlign: 'center', paddingTop: '50px'}}>
+            <span className='text-3xl text-white text-shadow-black text-md font-bold'>Blog page</span>
+            <div className='text-1xl text-white text-shadow-black text-md'>All the latest blogs about Aboard Study.</div>
         </div>
-
-    )
+        <Blogs/>
+    </nav> 
+  )
 }
-
-export default BlogsPage;

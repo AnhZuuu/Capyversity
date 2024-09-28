@@ -70,7 +70,7 @@ const Header: React.FC = () => {
     };
 
     return <>
-        <div style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', backgroundColor:'#2596be', padding:'5px', fontSize:'40px'}}>
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', backgroundColor:'#2596be', padding:'10px'}}>
             <Link
 
                 href='/users'

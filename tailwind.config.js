@@ -1,10 +1,12 @@
+const {nextui} = require('@nextui-org/theme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './page/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './app/**/*.{js,ts,jsx,tsx}',
-    './src/**/*.{js,ts,jsx,tsx}',
+    "./page/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@nextui-org/theme/dist/components/(card|ripple).js"
   ],
   theme: {
     extend: {
@@ -15,5 +17,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [nextui()],
 };
