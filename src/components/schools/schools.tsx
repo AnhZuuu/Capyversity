@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 
 
 const Schools = () => {
+    const id :string;
     // const res = await fetch(
     //     `https://66fd67c269936930895514d7.mockapi.io/School`,
     //     {
@@ -26,9 +27,9 @@ const Schools = () => {
     return (
         <div className={styles.card}>
             {data.map((uni, idx) => (
-                <div key={uni.id}>
+                <div key={(uni as { id: string })?.id}>
                     {/* <Link href={`/schools/${uni.id}`} key={uni.id}> */}
-                    <button onClick={() => router.push(`/schools/${uni.id}`)}>
+                    <button onClick={() => router.push(`/schools/${(uni as { id: string })?.id}`)}>
                         <Card className={styles.cardItem}>
                             <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                                 <p className="text-tiny uppercase font-bold">{uni.name}</p>

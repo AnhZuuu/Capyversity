@@ -16,8 +16,8 @@ const Blogs = () => {
   return (
     <div className={styles.card}>
         {data.map((blog, idx) => (
-            <div key={blog.id}>
-                <button onClick={() => router.push(`/blogs/${blog.id}`)}>
+            <div key={(blog as { id: string })?.id}>
+                <button onClick={() => router.push(`/blogs/${(blog as { id: string })?.id}`)}>
 
                     <Card className={styles.cardItem}>
                         <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
