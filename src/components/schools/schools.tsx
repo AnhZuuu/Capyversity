@@ -10,13 +10,8 @@ import { useRouter } from 'next/navigation';
 
 
 const Schools = () => {
-    const id :string;
-    // const res = await fetch(
-    //     `https://66fd67c269936930895514d7.mockapi.io/School`,
-    //     {
-    //         method: "GET",
-    //     });
-    // const data = await res.json();
+    
+    
     const [data, setData] = useState([])
     useEffect(() => {
         fetch(`https://66fd67c269936930895514d7.mockapi.io/School/`)
