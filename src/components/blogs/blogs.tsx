@@ -22,7 +22,6 @@ const Blogs = () => {
                     <Card className={styles.cardItem}>
                         <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
                             <p className="text-tiny uppercase font-bold">{blog.title}</p>
-                            {/* <small className="text-default-500">{blog.content}</small> */}
                         </CardHeader>
                         <CardBody className="overflow-visible py-2">
                             <Image
