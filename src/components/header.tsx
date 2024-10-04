@@ -76,7 +76,7 @@ const Header: React.FC = () => {
                 href='/users'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-transparent rounded-lg hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
             >
-                About us
+                Về chúng tôi
             </Link>
             {/* <Menu onClick={onClick} selectedKeys={[current]} mode="vertical" items={items}
                 style={{ display: 'flex', justifyContent: 'space-evenly' }}
@@ -85,24 +85,24 @@ const Header: React.FC = () => {
             <Link href='/schools'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-transparent rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
             >
-                SCHOOL
+                Trường
             </Link>
             <Link href='/users'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-transparent rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
             >
-                NEWS
+                Tin tức
             </Link>
             <Link href='/blogs'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-transparent rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
             >
-                BLOG
+                Chia sẻ
             </Link>
             </div>
             <Link
                 href='/blogs'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-white rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
             >
-                CONSULTANCY
+                Nâng cấp
             </Link>
         </div>
     </>;

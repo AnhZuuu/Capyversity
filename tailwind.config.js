@@ -6,7 +6,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@nextui-org/theme/dist/components/(card|ripple).js"
+    // "./node_modules/@nextui-org/theme/dist/components/(card|ripple).js"
   ],
   theme: {
     extend: {

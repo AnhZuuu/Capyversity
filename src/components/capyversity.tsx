@@ -13,7 +13,7 @@ const Capyversity: FC = () => {
                 href='/'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-white rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
             >
-                Home
+                Trang chủ
             </Link>
           {/* <Link href="/">Search</Link> */}
         </li>
@@ -32,7 +32,7 @@ const Capyversity: FC = () => {
             href='/login'
             className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-white rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
           >
-            Login
+            Đăng nhập
             {/* <svg
               className="w-3.5 h-3.5 ml-2"
               aria-hidden="true"

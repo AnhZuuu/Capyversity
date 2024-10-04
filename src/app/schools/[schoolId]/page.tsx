@@ -1,7 +1,6 @@
 'use client'
-import { useParams } from 'react-router-dom';
-import { useRouter, useSearchParams } from 'next/navigation';
-// import { useRouter } from 'next/router';
+
+import { useParams } from 'next/navigation';
 
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
 import React, { useEffect } from 'react'
@@ -9,27 +8,23 @@ import { useState } from 'react'
 import styles from './schools.module.css';
 
 
-const SchoolDetail = (props : any) => {
-  const {params} = props;
-  const  id  = params?.id;
-  const router = useRouter();
-  
-  // const { id } = router.query;
-  console.log(router, "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
-  // const { id } = useParams();
-  // const id = useSearchParams();
-  console.log("ID :" ,id);
+const SchoolDetail = () => {
+
+  const { schoolId } = useParams();
+  console.log(schoolId, "PARAMMMMMMMMMMMMM");
+
+
   const [data, setData] = useState([])
   useEffect(() => {
-    fetch(`https://66fd67c269936930895514d7.mockapi.io/School/${id}`)
+    fetch(`https://66fd67c269936930895514d7.mockapi.io/School/${schoolId}`)
       .then(response => response.json())
       .then(data => { setData(data) })
 
   }, []);
-  // const router = useRouter();
+
   return (
     <div className={styles.card}>
-      {/* {data.map((data, idx) => ( */}
+
       <div key={data.id}>
         <Card className={styles.cardItem}>
           <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
@@ -44,6 +39,9 @@ const SchoolDetail = (props : any) => {
                   width={150}
                   height={150}
                 /> */}
+            <img className="flex-row overflow-visible py-2 place-content-around"
+              width={150} height={150}
+              src={data.img1} alt="Card background" />
             <div className='flex-col'>
               <div>IELTS: <b>{data.IELTS}</b></div>
               <div>TOEIC: <b>{data.TOEIC}</b></div>
@@ -57,10 +55,9 @@ const SchoolDetail = (props : any) => {
             <h4 className="font-bold text-large">Ranking: #{data.avgTuition}</h4>
           </CardFooter>
         </Card>
-        {/* </button> */}
-        {/* </Link> */}
+
       </div>
-      {/* ))} */}
+
     </div>
   )
 };
