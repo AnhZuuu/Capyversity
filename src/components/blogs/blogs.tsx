@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { blogs } from '@/data/blogData'
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
 import { Image } from 'antd'
 import styles from './blogs.module.css';
