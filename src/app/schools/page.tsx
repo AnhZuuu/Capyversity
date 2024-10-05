@@ -1,6 +1,4 @@
 
-import LoadingCat from "@/components/loading-cat/page"
-import { universityData } from "@/data/universityData"
 import React from "react"
 // import { useState } from 'react';
 import { Card, CardBody, Image, Button, Slider } from "@nextui-org/react";
