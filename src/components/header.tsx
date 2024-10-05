@@ -17,7 +17,7 @@ const Header: React.FC = () => {
         <div style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', backgroundColor:'#2596be', padding:'10px'}}>
             <Link
 
-                href='/users'
+                href='/'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-transparent rounded-lg hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
             >
                 Về chúng tôi
@@ -28,7 +28,7 @@ const Header: React.FC = () => {
             >
                 Trường
             </Link>
-            <Link href='/users'
+            <Link href='/'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-transparent rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
             >
                 Tin tức
