@@ -13,8 +13,8 @@ const SchoolsPage = async (props: any) => {
         <>
             <nav style={{ backgroundColor: '#383434' }}>
                 <div style={{ textAlign: 'center', paddingTop: '50px' }}>
-                    <span className='text-3xl text-white text-shadow-black text-md font-bold'>Schools page</span>
-                    <div className='text-1xl text-white text-shadow-black text-md'>Schools for Aboard Study.</div>
+                    <span className='text-3xl text-white text-shadow-black text-md font-bold'>Trường</span>
+                    <div className='text-1xl text-white text-shadow-black text-md'>Không chỉ là du học, mà là một cuộc phiêu lưu không ngừng...</div>
                 </div>
                 <Schools />
             </nav>
