@@ -14,7 +14,7 @@ const SchoolDetail = () => {
   console.log(schoolId, "PARAMMMMMMMMMMMMM");
 
 
-  const [data, setData] = useState([])
+  const [data, setData] = useState<any>([])
   useEffect(() => {
     fetch(`https://66fd67c269936930895514d7.mockapi.io/School/${schoolId}`)
       .then(response => response.json())
