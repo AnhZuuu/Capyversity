@@ -21,20 +21,20 @@ const Blogs = () => {
 
                     <Card className={styles.cardItem}>
                         <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                            <p className="text-tiny uppercase font-bold">{blog.title}</p>
+                            <p className="text-tiny uppercase font-bold">{ (blog as { title: string })?.title }</p>
                         </CardHeader>
                         <CardBody className="overflow-visible py-2">
                             <Image
                             alt="Card background"
                             className="object-cover rounded-xl"
-                            src={blog.image}
+                            src={ (blog as { image: string })?.image }
                             width={270}
                             height={150}
                             />
                         </CardBody>
                         <CardFooter className="p-3 h-auto w-full overflow-hidden color-inherit subpixel-antialiased rounded-b-large flex justify-between items-center">
-                            <h4 className="block text-small text-default-500">{blog.date}</h4>
-                            <h4 className="font-bold text-large">{blog.author}</h4>
+                            <h4 className="block text-small text-default-500">{ (blog as { date: string })?.date }</h4>
+                            <h4 className="font-bold text-large">{ (blog as { author: string })?.author }</h4>
                         </CardFooter>
                     </Card>
                 </button>

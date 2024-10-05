@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Link from 'next/link';
-import { universityData } from '@/data/universityData'
+
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
 import { Image } from 'antd'
 import styles from './schools.module.css';
@@ -27,21 +27,21 @@ const Schools = () => {
                     <button onClick={() => router.push(`/schools/${(uni as { id: string })?.id}`)}>
                         <Card className={styles.cardItem}>
                             <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                                <p className="text-tiny uppercase font-bold">{uni.name}</p>
-                                <small className="text-default-500">{uni.numOfMajor} ngành</small>
+                                <p className="text-tiny uppercase font-bold">{ (uni as { name: string })?.name }</p>
+                                <small className="text-default-500">{ (uni as { numOfMajor: number })?.numOfMajor } ngành</small>
                             </CardHeader>
                             <CardBody className="flex-row overflow-visible py-2 place-content-around">
                                 <Image
                                     alt="Card background"
                                     className="object-cover rounded-xl"
-                                    src={uni.img1}
+                                    src={(uni as { img1: string })?.img1}
                                     width={150}
                                     height={150}
                                 />
                                 <div className='flex-col'>
-                                    <div className='text-[10px]'>IELTS: <b>{uni.IELTS}</b></div>
+                                    <div className='text-[10px]'>IELTS: <b>{ (uni as { IELTS: string })?.IELTS }</b></div>
                                     <br/>
-                                    <div className ="max-w-24 text-[10px]">Các bậc: <b>{uni.ranking}</b></div>
+                                    <div className ="max-w-24 text-[10px]">Các bậc: <b>{ (uni as { ranking: string })?.ranking }</b></div>
                                     {/* <div>HSK: <b>{uni.HSK}</b></div>
                                     <div>JPLT: <b>{uni.JPLT}</b></div> */}
 
@@ -49,8 +49,8 @@ const Schools = () => {
                                 </div>
                             </CardBody>
                             <CardFooter className="p-3 h-auto w-full overflow-hidden color-inherit subpixel-antialiased rounded-b-large flex justify-between items-center">
-                                <h4 className="block text-small text-default-500"> Địa chỉ: {uni.region}</h4>
-                                <p className="text-[7px] text-blue-500 text-wrap">{uni.link}</p>
+                                <h4 className="block text-small text-default-500"> Địa chỉ: {(uni as { region: string })?.region}</h4>
+                                <p className="text-[7px] text-blue-500 text-wrap">{(uni as { link: string })?.link}</p>
                             </CardFooter>
                         </Card>
                     </button>
