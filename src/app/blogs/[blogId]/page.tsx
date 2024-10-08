@@ -10,7 +10,7 @@ import HeartIcon from "@/components/heart_icon/page";
 
 const BlogDetail = () => {
   const { blogId } = useParams();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any>([]);
   useEffect(() => {
     fetch(`https://66fed8002b9aac9c997d9378.mockapi.io/blog/${blogId}`)
       .then((response) => response.json())
