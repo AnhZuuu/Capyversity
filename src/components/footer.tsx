@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
                       </svg>
                     </a>
                     <a
-                      href="#"
+                      href="https://www.instagram.com/capyversity/?fbclid=IwY2xjawFuBJBleHRuA2FlbQIxMAABHRyz2HkI15JfuzIHztLGM5brDBTAjVj6V3x59X4Sg5MZGOnCadT5gfgXBQ_aem_oAy-8creSf7XU8MaZIPTUQ"
                       target="blank"
                       aria-label="Instagram"
                       className="hover:text-cyan-600"
