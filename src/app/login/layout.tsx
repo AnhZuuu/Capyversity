@@ -4,7 +4,8 @@ import StyledComponentsRegistry from '@/lib/antd.registry';
 import Header from '@/components/header';
 import Capyversity from'@/components/capyversity';
 import Footer from '@/components/footer';
-import '@/app/css/App.css'
+import Login from './page';
+import LoginPage from './page';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,13 +19,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en"  style={{backgroundColor: '#383434'}}>
+    <html lang="en">
       <body className={inter.className}>
         <StyledComponentsRegistry>
-          <Capyversity/>
-          <Header/>
-          {children}
-          <Footer/>
+          <LoginPage/>
         </StyledComponentsRegistry>
       </body>
     </html>
