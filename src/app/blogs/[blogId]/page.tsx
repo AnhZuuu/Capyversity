@@ -1,12 +1,11 @@
 "use client";
 import { useParams } from "next/navigation";
-
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import styles from "./schools.module.css";
+import styles from "./blogs.module.css";
 import { Image } from "antd";
 import HeartIcon from "@/components/heart_icon/page";
+import OtherBlogs from "@/components/blogs/otherBlogs";
 
 const BlogDetail = () => {
   const { blogId } = useParams();
@@ -30,7 +29,7 @@ const BlogDetail = () => {
           <div className="container flex justify-between m-auto px-6 text-gray-600 dark:text-gray-300 md:px-12 xl:px-6">
             <div
               className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none"
-              style={{ width: 800 }}
+              style={{ width: 800, height : 900 }}
             >
               <div className="flex gap-4">
                 <img
@@ -71,8 +70,12 @@ const BlogDetail = () => {
               </div>
             </div>
 
-            <div>
-              <h4>Các chia sẻ khác</h4>
+            <div className={styles.listOther}>
+              <h2 className={styles.labelOtherBlog}>Các chia sẻ khác</h2>
+              <div className="other-content">
+                {/* <otherBlogs/> */}
+                <OtherBlogs/>
+              </div>
             </div>
           </div>
         </div>

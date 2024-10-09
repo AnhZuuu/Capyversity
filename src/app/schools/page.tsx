@@ -1,8 +1,4 @@
-
 import React from "react"
-// import { useState } from 'react';
-import { Card, CardBody, Image, Button, Slider } from "@nextui-org/react";
-import HeartIcon from "@/components/heart_icon/page";
 import Schools from "@/components/schools/schools";
 
 const SchoolsPage = async (props: any) => {
