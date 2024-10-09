@@ -41,7 +41,7 @@ export default function LoginPage() {
               </button>
   
               <p className="border-t border-gray-100 dark:border-gray-700 pt-6 text-sm text-gray-500 dark:text-gray-400">
-                Don't have an account ?
+                Not have an account ?
                 <a href="#" className="text-primary">Sign up</a>
               </p>
             </form>
