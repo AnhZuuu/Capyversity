@@ -1,8 +1,11 @@
 import "@/app/css/App.css";
 import { url } from "inspector";
 // import '../'
-import capyversity_rmbg from '../../public/capyversity-removebg.png'
-import globalizattion from "../../public/globalization-cuate.svg"
+import capyversity_rmbg from "../../public/capyversity-removebg.png";
+import globalizattion from "../../public/globalization-cuate.svg";
+import logoFB from "../../public/logoFb.png";
+import logoInstagram from "../../public/logoIns.png";
+import logoGmail from "../../public/logoGmail.png";
 import Image from "next/image";
 
 export default function Home() {
@@ -14,59 +17,130 @@ export default function Home() {
   return (
     <>
       <div className="relative pt-10 pb-20 lg:pt-10">
-          <div className="relative xl:container m-auto px-6 md:px-12 lg:px-6">
-              <h1 className="sm:mx-auto sm:w-10/12 md:w-2/3 font-black text-blue-900 text-4xl text-center sm:text-5xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl dark:text-white">Relax, Enjoy and Explore<br className="lg:block hidden"/> <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary dark:from-primaryLight dark:to-secondaryLight">the world</span>.</h1>
-              <div className="lg:flex">
-                  <div className="relative mt-8 md:mt-16 space-y-8 sm:w-10/12 md:w-2/3 lg:ml-0 sm:mx-auto text-center lg:text-left lg:mr-auto lg:w-7/12">
-                      <p className="sm:text-lg text-gray-700 dark:text-gray-300 lg:w-11/12">
-                          DailyBot takes chat and collaboration to the next level: daily standups, team check-ins, surveys, kudos, best companion bot for your virtual watercooler, 1:1 intros, motivation tracking and more.
-                      </p>
-                      <span className="block font-semibold text-gray-500 dark:text-gray-400">The best companion bot for your chat app.</span>
-
-                      <div className="dark:text-gray-300">
-                          🔥🌟 
-                          <span>Phương thức liên lạc</span> 
-                          {/* <a href="#" className="font-semibold text-gray-700 dark:text-gray-200">Discord,</a>
-                          <a href="#" className="font-semibold text-gray-700 dark:text-gray-200">Telegram</a> */}
-                      </div>
-                      <div className="grid grid-cols-3 space-x-4 md:space-x-6 md:flex md:justify-center lg:justify-start">
-                          <a aria-label="add to slack" href="https://www.facebook.com/profile.php?id=61566054150164" className="p-4 border border-gray-200 dark:bg-gray-800 dark:border-gray-700 rounded-full duration-300 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-600/20 dark:hover:border-cyan-300/30">
-                              <div className="flex justify-center space-x-4">
-                                  <img className="w-6 h-6" src="public/capyversity_rmbg" alt="facebook" loading="lazy" width="128" height="128"/>
-                                  <span className="hidden font-medium md:block dark:text-white">Facebook</span>
-                              </div>
-                          </a>    
-                          <a aria-label="add to chat" href="https://www.instagram.com/capyversity/?fbclid=IwY2xjawFuBJBleHRuA2FlbQIxMAABHRyz2HkI15JfuzIHztLGM5brDBTAjVj6V3x59X4Sg5MZGOnCadT5gfgXBQ_aem_oAy-8creSf7XU8MaZIPTUQ" className="p-4 border border-gray-200 dark:bg-gray-800  dark:border-gray-700 rounded-full duration-300 hover:border-green-400 hover:shadow-lg hover:shadow-lime-600/20 dark:hover:border-green-300/30">
-                              <div className="flex justify-center space-x-4">
-                                  <img className="w-6 h-6" src="images/chat.png" alt="chat logo" loading="lazy" width="128" height="128"/>
-                                  <span className="hidden font-medium md:block dark:text-white">Instagram</span>
-                              </div>
-                          </a>   
-                          <a aria-label="add to zoom" href="#" className="p-4 border border-gray-200 dark:bg-gray-800  dark:border-gray-700 rounded-full duration-300 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-600/20 dark:hover:border-blue-300/30">
-                              <div className="flex justify-center space-x-4">
-                                  <img className="w-6 h-6" src="images/zoom.png" alt="chat logo" loading="lazy" width="128" height="128"/>
-                                  <span className="hidden font-medium md:block dark:text-white">Capyversity@gmail.com</span>
-                              </div>
-                          </a>    
-                      </div>
-                      <div className="pt-12 flex gap-6 lg:gap-12 justify-between grayscale lg:w-2/3">
-                          <img src="./images/clients/airbnb.svg" className="h-8 sm:h-10 w-auto lg:h-12" alt="" />
-                          <img src="./images/clients/ge.svg" className="h-8 sm:h-10 w-auto lg:h-12" alt="" />
-                          <img src="./images/clients/coty.svg" className="h-8 sm:h-10 w-auto lg:h-12" alt="" />
-                          <img src="./images/clients/microsoft.svg" className="h-8 sm:h-10 w-auto lg:h-12" alt="" />
-                      </div>
+        <div className="relative xl:container m-auto px-6 md:px-12 lg:px-6">
+          <h1 className="sm:mx-auto sm:w-10/12 md:w-2/3 font-black text-white text-4xl text-center sm:text-5xl md:text-6xl lg:w-auto lg:text-left xl:text-7xl dark:text-white">
+            Relax, Enjoy and Explore
+            <br className="lg:block hidden" />{" "}
+            <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary dark:from-primaryLight dark:to-secondaryLight">
+              the world
+            </span>
+            .
+          </h1>
+          <div className="lg:flex">
+            <div className="relative mt-8 md:mt-16 space-y-8 sm:w-10/12 md:w-2/3 lg:ml-0 sm:mx-auto text-center lg:text-left lg:mr-auto lg:w-7/12">
+              <p className="sm:text-lg text-gray-300 lg:w-11/12">
+                Capyversity mang mong muốn là một trang tổng hợp thông tin du
+                học chính thống từ các trường đại học ở khu vực Đông Nam Á. Hỗ
+                trợ các bạn tìm kiếm thông tin nhanh chóng và chính xác. Để đảm
+                bảo các bạn không bỏ lỡ bất kỳ thông tin nào, Capyversity sẽ
+                luôn cập nhập các thông tin mới nhất và chi tiết của các trường
+                đại học.
+              </p>
+              <span className="block font-semibold text-gray-400">
+                Bạn cần gì đã có Capy lo.
+              </span>
+              <span className="block font-semibold text-blue-500">
+                Don't worry, be Capy.
+              </span>
+              <div className="grid grid-cols-3 space-x-4 md:space-x-6 md:flex md:justify-center lg:justify-start">
+                <a
+                  aria-label="add to slack"
+                  href="https://www.facebook.com/profile.php?id=61566054150164"
+                  className="p-4 border border-gray-700 bg-gray-800 dark:border-gray-700 rounded-full duration-300 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-600/20 dark:hover:border-cyan-300/30"
+                >
+                  <div className="flex justify-center space-x-4">
+                    <Image
+                      src={logoFB}
+                      alt="Facebook logo"
+                      width={28}
+                      height={28}
+                    />
+                    <span className="hidden font-medium md:block text-white">
+                      Facebook
+                    </span>
                   </div>
-                  <div className="md:mt-0 lg:absolute -right-40 lg:w-7/12" style={{marginTop : -60}}>
-                      <div className="relative w-full">
-                          <div aria-hidden="true" className="absolute scale-75 md:scale-110 inset-0 m-auto w-full h-full md:w-96 md:h-96 rounded-full rotate-45 bg-gradient-to-r from-primaryLight to-secondaryLight blur-3xl"></div>
-                          <Image src={globalizattion} alt="globalizattion" loading="lazy" width="600" height="600"/>
-                          {/* <img src="/public/globalization.png" className="relative w-full" alt="wath illustration" loading="lazy" width="320" height="280"/> */}
-                      </div>
+                </a>
+                <a
+                  aria-label="add to chat"
+                  href="https://www.instagram.com/capyversity/?fbclid=IwY2xjawFuBJBleHRuA2FlbQIxMAABHRyz2HkI15JfuzIHztLGM5brDBTAjVj6V3x59X4Sg5MZGOnCadT5gfgXBQ_aem_oAy-8creSf7XU8MaZIPTUQ"
+                  className="p-4 border border-gray-700 bg-gray-800 dark:border-gray-700 rounded-full duration-300 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-600/20 dark:hover:border-cyan-300/30"
+                >
+                  <div className="flex justify-center space-x-4">
+                    <Image
+                      src={logoInstagram}
+                      alt="Instagram logo"
+                      width={20}
+                      height={18}
+                    />
+                    <span className="hidden font-medium md:block text-white">
+                      Instagram
+                    </span>
                   </div>
+                </a>
+                <a
+                  aria-label="add to zoom"
+                  href="#"
+                  className="p-4 border border-gray-700 bg-gray-800 dark:border-gray-700 rounded-full duration-300 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-600/20 dark:hover:border-cyan-300/30"
+                >
+                  <div className="flex justify-center space-x-4">
+                    <Image
+                      src={logoGmail}
+                      alt="Gmail logo"
+                      width={20}
+                      height={20}
+                    />
+                    <span className="hidden font-medium md:block text-white">
+                      Capyversity@gmail.com
+                    </span>
+                  </div>
+                </a>
               </div>
+              <div className="pt-12 flex gap-6 lg:gap-12 justify-between grayscale lg:w-2/3">
+                <img
+                  src="./images/clients/airbnb.svg"
+                  className="h-8 sm:h-10 w-auto lg:h-12"
+                  alt=""
+                />
+                <img
+                  src="./images/clients/ge.svg"
+                  className="h-8 sm:h-10 w-auto lg:h-12"
+                  alt=""
+                />
+                <img
+                  src="./images/clients/coty.svg"
+                  className="h-8 sm:h-10 w-auto lg:h-12"
+                  alt=""
+                />
+                <img
+                  src="./images/clients/microsoft.svg"
+                  className="h-8 sm:h-10 w-auto lg:h-12"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div
+              className="md:mt-0 lg:absolute -right-40 lg:w-7/12"
+              style={{ marginTop: -60 }}
+            >
+              <div className="relative w-full">
+                <div
+                  aria-hidden="true"
+                  className="absolute scale-75 md:scale-110 inset-0 m-auto w-full h-full md:w-96 md:h-96 rounded-full rotate-45 bg-gradient-to-r from-primaryLight to-secondaryLight blur-3xl"
+                ></div>
+                <Image
+                  src={globalizattion}
+                  alt="globalizattion"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                />
+                {/* <img src="/public/globalization.png" className="relative w-full" alt="wath illustration" loading="lazy" width="320" height="280"/> */}
+              </div>
+            </div>
           </div>
+        </div>
       </div>
-                                    
+
       <div className="schools">
         <div className="py-12 gap-6 border-b border-white py-6 mx-12">
           <div className="xl:container m-auto px-6 text-gray-500 md:px-12">
