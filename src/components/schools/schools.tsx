@@ -49,7 +49,7 @@ const Schools = () => {
                                 </div>
                             </CardBody>
                             <CardFooter className="p-3 h-auto w-full overflow-hidden color-inherit subpixel-antialiased rounded-b-large flex justify-between items-center">
-                                <h4 className="block text-small text-default-500"> Địa chỉ: {(uni as { region: string })?.region}</h4>
+                                <h4 className="block text-small text-default-500"> Địa chỉ: { (uni as { region: string })?.region }</h4>
                                 <p className="text-[7px] text-blue-500 text-wrap">{(uni as { link: string })?.link}</p>
                             </CardFooter>
                         </Card>

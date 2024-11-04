@@ -1,0 +1,31 @@
+
+.card {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    transform: scale(1.0); /* 110% zoom */
+    transform-origin: top left;
+}
+.filterSection {
+    display: block;
+    justify-self: center;
+}
+.input {
+    text-align: center;
+    margin: 10px;
+}
+
+.cardItem {
+    width: 500px;
+    height: 400px;
+    padding: 50px;
+    margin: 50px;
+    background-color: aliceblue;
+    border-radius: 10px;
+
+}
+
+.footerCard {
+    display: flex;
+}
