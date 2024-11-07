@@ -1,20 +1,22 @@
 import Link from 'next/link';
 import styles from './capyversity.module.css';
 import Image from 'next/image';
-import capyversity from '../../public/capyversity.png'
-import capyversity_rmbg from '../../public/capyversity-removebg.png'
+// import capyversity from '../../public/capyversity.png'
+// import capyversity_rmbg from '../../public/capyversity-removebg.png';
+import capyversity_rmbg from '../../public/capyversity-removebg.png';
+
 import { FC } from 'react';
 const Capyversity: FC = () => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.list}>
         <li style={{display:'flex', alignItems: 'center'}}>
-        <Link
-                href='/'
-                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-white rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
-            >
-                Trang chủ
-            </Link>
+          <Link
+            href='/'
+            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-white rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800 mr-20"
+          >
+            Trang chủ
+          </Link>
           {/* <Link href="/">Search</Link> */}
         </li>
         <li>
@@ -25,7 +27,7 @@ const Capyversity: FC = () => {
           </div>
 
         </li>
-
+        
         <li>
           <Link
 
