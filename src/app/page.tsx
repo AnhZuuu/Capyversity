@@ -40,7 +40,7 @@ export default function Home() {
                 Bạn cần gì đã có Capy lo.
               </span>
               <span className="block font-semibold text-blue-500">
-                Don't worry, be Capy.
+                Don&apos;t worry, be Capy.
               </span>
               <div className="grid grid-cols-3 space-x-4 md:space-x-6 md:flex md:justify-center lg:justify-start">
                 <a
