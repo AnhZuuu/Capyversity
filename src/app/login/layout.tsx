@@ -6,6 +6,7 @@ import Capyversity from'@/components/capyversity';
 import Footer from '@/components/footer';
 import Login from './page';
 import LoginPage from './page';
+import "@/app/css/App.css";
 
 const inter = Inter({ subsets: ['latin'] })
 

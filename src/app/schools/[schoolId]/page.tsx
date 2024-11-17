@@ -1,6 +1,7 @@
 'use client'
 
 import { useParams } from 'next/navigation';
+import "@/app/css/App.css";
 
 import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
 import React, { useEffect } from 'react'
