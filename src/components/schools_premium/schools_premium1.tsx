@@ -50,22 +50,28 @@ const Schools_Premium1 = () => {
     return (
         <>
             <div className={styles.filterSection}>
-                <input
-                    className={styles.input}
-                    type="text"
-                    placeholder="IELTS"
-                    name="ielts"
-                    value={filters.ielts}
-                    onChange={handleFilterChange}
-                />
-                <input
-                    className={styles.input}
-                    type="text"
-                    placeholder="Number of Majors"
-                    name="numOfMajor"
-                    value={filters.numOfMajor}
-                    onChange={handleFilterChange}
-                />
+
+                
+                    <input
+                        className={styles.input}
+                        type="text"
+                        placeholder="IELTS"
+                        name="ielts"
+                        value={filters.ielts}
+                        onChange={handleFilterChange}
+                    />
+                
+                
+                    <input
+                        className={styles.input}
+                        type="text"
+                        placeholder="Number of Majors"
+                        name="numOfMajor"
+                        value={filters.numOfMajor}
+                        onChange={handleFilterChange}
+                    />
+                
+
                 <input
                     className={styles.input}
                     type="text"
@@ -74,6 +80,17 @@ const Schools_Premium1 = () => {
                     value={filters.ranking}
                     onChange={handleFilterChange}
                 />
+                <input
+                    className={styles.input}
+                    type="text"
+                    placeholder="Region"
+                    name="region"
+                    value={filters.region}
+                    onChange={handleFilterChange}
+                />
+                
+                <button className='text-lg bg-blue-400 text-gray-800 text-shadow-black text-md font-bold rounded-md p-3'>Compare schools</button>
+                <br />
                 <input
                     className={styles.input}
                     type="text"
