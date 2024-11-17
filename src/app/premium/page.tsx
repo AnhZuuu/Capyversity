@@ -1,4 +1,5 @@
 import React from "react";
+import "@/app/css/App.css";
 
 export default function Premium() {
   return (

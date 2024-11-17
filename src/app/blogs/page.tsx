@@ -1,5 +1,7 @@
 import React from 'react'
 import Blogs from '@/components/blogs/blogs'
+import "@/app/css/App.css";
+
 
 export default function BlogPage() {
   return (

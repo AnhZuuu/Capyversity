@@ -1,7 +1,6 @@
 import "@/app/css/App.css";
 import { url } from "inspector";
 // import '../'
-import capyversity_rmbg from "../../public/capyversity-removebg.png";
 import globalizattion from "../../public/globalization-cuate.svg";
 import logoFB from "../../public/logoFb.png";
 import logoInstagram from "../../public/logoIns.png";

@@ -4,6 +4,7 @@ import { Card, CardBody, CardFooter, CardHeader } from '@nextui-org/card'
 import { Image } from 'antd'
 import styles from './schools.module.css'
 import { useRouter } from 'next/navigation'
+import '@/app/css/App.css'
 
 const Schools_Premium1 = () => {
     const [data, setData] = useState([]);

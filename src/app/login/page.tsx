@@ -1,56 +1,95 @@
-import LoginForm from '@/components/login/loginform'
-import React from 'react'
+"use client";
+import React, { useState } from "react";
+import axios from "axios";
+import "@/app/css/App.css";
+import { useRouter } from "next/navigation";
+// import { useRouter } from "next/router";
+// import { useNavigate} from "react-router-dom";
+import capyversity_rmbg from "../../../public/capyversity-removebg.png";
+import Image from "next/image";
 
-export default function LoginPage() {
+const LoginPage: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const route = useRouter();
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post(
+        "https://koi-api.uydev.id.vn/api/v1/users/login",
+        {
+          email,
+          password,
+        }
+      );
+
+      if (response.data.data.status === false) {
+        alert(response.data.data.message);
+      } else {
+        // const jwtToken = response.data.data.jwt;
+        // alert("Login successful");
+        // localStorage.setItem("jwtToken", jwtToken);
+        route.push("/");
+        // window.location.href = "http://localhost:3000/schools";
+        window.location.href = "/schools";
+        // window.location.reload();
+        // window.location.href = "https://capyversity.vercel.app/";
+      }
+    } catch (error: any) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        alert(error.response.data.message);
+      } else {
+        console.error("Login error", error);
+        alert("Error: Something went wrong. Please try again.");
+      }
+    }
+  };
+
   return (
-    
-    <div className="relative py-16">
-    <div className="container relative m-auto px-6 text-gray-500 md:px-12 xl:px-40">
-      <div className="m-auto space-y-8 md:w-8/12 lg:w-6/12 xl:w-6/12">
-        <div className="rounded-3xl border border-gray-100 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 backdrop-blur-2xl">
-          <div className="p-8 py-12 sm:p-16">
-            <h2 className="mb-8 text-2xl font-bold text-gray-800 dark:text-white">Sign in to your account</h2>
-            <form action="" className="space-y-8">
-              <div className="space-y-2">
-                <label className="text-gray-600 dark:text-gray-300">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  className="focus:outline-none block w-full rounded-md border border-gray-200 dark:border-gray-600 bg-transparent px-4 py-3 text-gray-600 transition duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 focus:ring-cyan-300"
-                />
-              </div>
-  
-              <div>
-                <div className="flex items-center justify-between">
-                  <label className="text-gray-600 dark:text-gray-300">Password</label>
-                  <button className="-mr-2 p-2" type="reset">
-                    <span className="text-sm text-primary">Forgot your password ?</span>
-                  </button>
-                </div>
-                <input
-                  type="password"
-                  name="pwd"
-                  id="pwd"
-                  className="focus:outline-none block w-full rounded-md border border-gray-200 dark:border-gray-600 bg-transparent px-4 py-3 text-gray-600 transition duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 focus:ring-cyan-300"
-                />
-              </div>
-  
-              <button type="submit" className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
-                <span className="relative text-base font-semibold text-white dark:text-dark">Log in</span>
-              </button>
-  
-              <p className="border-t border-gray-100 dark:border-gray-700 pt-6 text-sm text-gray-500 dark:text-gray-400">
-                Not have an account ?
-                <a href="#" className="text-primary">Sign up</a>
-              </p>
-            </form>
-          </div>
-        </div>
-       
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-800 to-black text-white">
+      {" "}
+      <div className="bg-[#383434] p-8 rounded-lg shadow-lg text-center">
+        {" "}
+        <div className="mb-6">
+          {" "}
+          <Image src={capyversity_rmbg} alt="Facebook logo" className="w-40 h-40 mx-auto" />
+        </div>{" "}
+        <h2 className="text-3xl font-extrabold mb-4">Welcome Back</h2>{" "}
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full p-3 mb-4 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 bg-gray-900 text-white"
+        />{" "}
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full p-3 mb-4 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 bg-gray-900 text-white"
+        />{" "}
+        <button
+          onClick={handleLogin}
+          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200"
+        >
+          {" "}
+          Login{" "}
+        </button>{" "}
+        <p className="mt-4 text-gray-400">
+          {" "}
+          Don&apos;t have an account?{" "}
+          <a href="/register" className="text-blue-400 hover:underline">
+            Register
+          </a>{" "}
+        </p>{" "}
       </div>
     </div>
-  </div>
-                                      
-  )
-}
+  );
+};
+
+export default LoginPage;
