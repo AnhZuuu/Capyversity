@@ -1,0 +1,42 @@
+/* compare.module.css */
+.compareContainer {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    /* background-color: darkcyan; */
+}
+
+.selectContainer {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.comparisonTable {
+    margin-top: 30px;
+    overflow-x: auto;
+    background-color: aliceblue;
+
+}
+.comparisonTable img {
+    max-width: 100px;
+    border-radius: 8px;
+}
+
+.comparisonTable table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparisonTable th,
+.comparisonTable td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.comparisonTable th {
+    background-color: #f4f4f4;
+}

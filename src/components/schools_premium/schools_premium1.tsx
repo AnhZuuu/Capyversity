@@ -89,7 +89,7 @@ const Schools_Premium1 = () => {
                     onChange={handleFilterChange}
                 />
                 
-                <button className='text-lg bg-blue-400 text-gray-800 text-shadow-black text-md font-bold rounded-md p-3'>Compare schools</button>
+                <button className='bg-blue-400 text-gray-800 text-shadow-black text-sm font-bold rounded-md p-3'>Compare schools</button>
                 <br />
                 <input
                     className={styles.input}
