@@ -21,10 +21,14 @@ const Schools = () => {
 
     const [showPopup, setShowPopup] = useState(false);
 
-    const togglePopup = () => {
-        setShowPopup(!showPopup);
-    };
+    // const togglePopup = () => {
+    //     setShowPopup(!showPopup);
+    // };
+    const [activePopup, setActivePopup] = useState<string | null>(null); // Store ID of active popup
 
+    const togglePopup = (id: string) => {
+        setActivePopup(activePopup === id ? null : id); // If the same popup is clicked, close it, else open the new one
+    };
     return (
         <>
             <div >
@@ -34,7 +38,8 @@ const Schools = () => {
                         {/* <button onClick={() => router.push(`/schools/${(uni as { id: string })?.id}`)}> */}
                         <Card className='w-full h-1/10'>
                             <button
-                                onClick={togglePopup}
+                                // onClick={togglePopup}
+                                onClick={() => togglePopup((uni as { id: string })?.id)}
                                 className="mt-2 px-4 py-2 bg-white-500 rounded hover:bg-gray-300"
                             >
                                 <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
@@ -54,7 +59,7 @@ const Schools = () => {
                                         <div className='text-[10px]'>IELTS: <b>{(uni as { IELTS: string })?.IELTS}</b></div>
                                         <div className='text-[10px]'>HSK: <b>{(uni as { HSK: string })?.HSK}</b></div>
                                         <div className='text-[10px]'>JPLT: <b>{(uni as { JPLT: string })?.JPLT}</b></div>
-                                        
+
                                     </div>
                                 </CardBody>
                                 <CardFooter className="p-3 h-auto w-full overflow-hidden color-inherit subpixel-antialiased rounded-b-large flex justify-between items-center">
@@ -65,8 +70,16 @@ const Schools = () => {
                             </button>
                         </Card>
                         {/* Popup */}
-                        {showPopup && (
+                        {activePopup === (uni as { id: string })?.id && (
+                            // {showPopup && (
                             <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-30 flex justify-center items-center z-50">
+                                <button
+                                        // onClick={togglePopup}
+                                        onClick={() => togglePopup((uni as { id: string })?.id)}
+                                        className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                                    >
+                                        Close
+                                    </button>
                                 <div className="bg-white p-6 rounded-lg shadow-lg w-3/4 max-w-md">
                                     <h3 className="text-lg font-bold mb-4">
                                         Details of {(uni as { name: string })?.name}
@@ -97,12 +110,13 @@ const Schools = () => {
                                             {(uni as { link: string })?.link}
                                         </a>
                                     </p>
-                                    <button
-                                        onClick={togglePopup}
+                                    {/* <button
+                                        // onClick={togglePopup}
+                                        onClick={() => togglePopup((uni as { id: string })?.id)}
                                         className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
                                     >
                                         Close
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
                         )}
