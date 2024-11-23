@@ -13,7 +13,8 @@
 }
 .input {
     text-align: center;
-    margin: 10px;
+    margin: 5px;
+    border-radius: 4px;
 }
 
 .cardItem {

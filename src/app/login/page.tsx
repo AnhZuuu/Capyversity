@@ -36,7 +36,8 @@ const LoginPage: React.FC = () => {
       if (user) {
         alert("Login succesfully!");
         // localStorage.setItem("jwtToken", "mock-jwt-token");
-        // route.push("/schools");
+
+
         window.location.href = "/schools";
       } else {
         alert("Invalid email or password");
@@ -69,6 +70,7 @@ const LoginPage: React.FC = () => {
   }
 
   return (
+    <>
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-800 to-black text-white">
       <div className="bg-[#383434] p-8 rounded-lg shadow-lg text-center">
         <div className="mb-6">
@@ -99,6 +101,7 @@ const LoginPage: React.FC = () => {
           onClick={handleLogin}
           className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200"
         >
+
           Đăng nhập
         </button>
         <p className="mt-4 text-gray-400">
@@ -107,8 +110,10 @@ const LoginPage: React.FC = () => {
             Đăng ký
           </a>
         </p>
+
       </div>
     </div>
+    </>
   );
 };
 
