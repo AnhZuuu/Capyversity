@@ -19,7 +19,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <StyledComponentsRegistry>
-          <LoginPage/>
+          {children}
+          {/* <LoginPage/> */}
         </StyledComponentsRegistry>
       </body>
     </html>
