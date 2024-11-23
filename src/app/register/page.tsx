@@ -12,7 +12,8 @@ const RegisterPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
-  const [dob, setDob] = useState<string | null>(null);
+  // const [dob, setDob] = useState<string | null>(null);
+  const [dob, setDob] = useState<string>(""); // Initialize dob with an empty string
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isClient, setIsClient] = useState(false); // Track if we're on the client
   const router = useRouter();
@@ -41,7 +42,7 @@ const RegisterPage: React.FC = () => {
   const handleRegister = async () => {
     if (!validate()) return;
     // Convert dob to desired format
-    const formattedDob = dob ? dob.toString().split("T")[0] : "";
+    // const formattedDob = dob ? dob.toString().split("T")[0] : "";
     try {
       const response = await axios.post(
         "https://671b3d972c842d92c37f0b37.mockapi.io/user",
@@ -49,7 +50,7 @@ const RegisterPage: React.FC = () => {
           email,
           password,
           fullName,
-          dob: formattedDob,
+          dob,
           phoneNumber,
         }
       );
@@ -106,30 +107,14 @@ const RegisterPage: React.FC = () => {
           onChange={(e) => setPassword(e.target.value)}
           className="w-full p-3 mb-4 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 bg-gray-900 text-white"
         />
-        {errors.password && <p className="text-red-500">{errors.password}</p>}
-        {/* <input value={dob} onChange={(e) => setDob(e.target.value)}> */}
-
-        <DatePicker
-          value={dob ? { date: new Date(dob) } : null} // Adapted to fit expected DateValue type
-          // value={dob ? new Date(dob).toISOString().split("T")[0] : null}
-          // value={dob ? new DateValue(new Date(dob)) : null} // Create a DateValue from Date object
-          onChange={(date: DateValue) => setDob(date.toString().split("T")[0])}
-          placeholder="Ngày tháng năm sinh"
-          dateFormat="dd/MM/yyyy"
-          label="Ngày tháng năm sinh"
-          className="max-w-[800px]"
-        />
-        {/* <DatePicker selected={dob} onChange={(date: Date) => setDob(date ? new Date(date).toISOString().split('T')[0] : null)} placeholderText="Ngày tháng năm sinh" dateFormat="yyyy-MM-dd" className="w-full p-3 mb-4 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 bg-gray-900 text-white" /> */}
-        <br />
-        {/* </input> */}
-
-        {/* <input
+        {errors.password && <p className=" w-full p-3 mb-4 text-red-500">{errors.password}</p>}
+        <input
           type="date"
           placeholder="Ngày tháng năm sinh"
-          value={dob}
+          value={dob || ""} // This ensures dob is always a string
           onChange={(e) => setDob(e.target.value)}
           className="w-full p-3 mb-4 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 bg-gray-900 text-white"
-        /> */}
+        />
         {errors.dob && <p className="text-red-500">{errors.dob}</p>}
         <input
           type="text"
