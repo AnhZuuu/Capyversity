@@ -21,7 +21,7 @@ const LoginPage: React.FC = () => {
           email,
           password,
         }
-      );
+      ); //lỗi nó báo ở đây nha, cái 3 erros khi vào trang á (stack div gì á)
 
       if (response.data.data.status === false) {
         alert(response.data.data.message);
@@ -50,6 +50,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
+    <>
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-800 to-black text-white">
       {" "}
       <div className="bg-[#383434] p-8 rounded-lg shadow-lg text-center">
@@ -80,15 +81,16 @@ const LoginPage: React.FC = () => {
           {" "}
           Login{" "}
         </button>{" "}
-        <p className="mt-4 text-gray-400">
+        <div className="mt-4 text-gray-400">
           {" "}
           Don&apos;t have an account?{" "}
           <a href="/register" className="text-blue-400 hover:underline">
             Register
           </a>{" "}
-        </p>{" "}
+        </div>{" "}
       </div>
     </div>
+    </>
   );
 };
 
