@@ -4,6 +4,7 @@ import StyledComponentsRegistry from '@/lib/antd.registry';
 import "@/app/css/App.css";
 import Admin from './page';
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
