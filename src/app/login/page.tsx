@@ -87,7 +87,12 @@ const LoginPage: React.FC = () => {
       );
       if (response.status === 201) {
         alert("Đăng nhập thành công");
-        window.location.href = "/schools";
+        if (email === 'admin@gmail.com') {
+          router.push("/admin");
+        }
+        else {
+          window.location.href = "/schools";
+        }
         // router.push("/"); // Navigate to the home page after successful login
       } else {
         alert("Đăng nhập không thành công.");
@@ -105,6 +110,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-gray-800 to-black flex items-center justify-center p-4">
+      <a href="/">Home</a>
       <div className="bg-[#383434] rounded-xl shadow-2xl w-full max-w-md p-8 transform transition-all duration-300">
         {isRegistering ? (
           <>
