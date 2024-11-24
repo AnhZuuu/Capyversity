@@ -1,7 +1,75 @@
-import React from "react";
+'use client'
+import React, { useEffect, useState } from "react";
 import "@/app/css/App.css";
 
 export default function Premium() {
+
+  const [showPopup, setShowPopup] = useState(false);
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
+
+
+  const [userInfo, setUserInfo] = useState<any>(null);
+  useEffect(() => {
+    const storedUserInfo = localStorage.getItem("userInfo");
+    if (storedUserInfo) {
+      setUserInfo(JSON.parse(storedUserInfo));
+    }
+  }, []);
+
+  const MY_BANK = {
+    BANK_ID: "MB",
+    ACCOUNT_NO: "8455003078",
+  };
+
+  // Pre-filled values
+  const [numberInput, setNumberInput] = useState("49000"); // Default amount
+  const [content, setContent] = useState("Thanh toán dịch vụ"); // Default content
+  const [paidContent, setPaidContent] = useState("");
+  const [qrSrc, setQrSrc] = useState("");
+
+  useEffect(() => {
+    console.log("userInfo:", userInfo); // Check the structure of userInfo
+    if (userInfo) {
+      const name = userInfo[0].email;
+      // console.log(userInfo[0].fullName);
+      setContent(`${name} premium1`);
+    } else {
+      setContent("Thanh toán dịch vụ");
+    }
+  }, [userInfo, setContent]);
+
+
+  const validateAndHandleNumberInput = () => {
+    const amount = parseFloat(numberInput);
+    if (!isNaN(amount) && amount >= 10000) {
+      console.log(`Valid number: ${amount}`);
+      setPaidContent(`Thanh toán cho Capyversity với nội dung: ${content}`);
+      const QR = `https://img.vietqr.io/image/${MY_BANK.BANK_ID}-${MY_BANK.ACCOUNT_NO}-compact2.png?amount=${amount}&addInfo=${content}`;
+      setQrSrc(QR);
+    } else {
+      alert("Số tiền phải lớn hơn hoặc bằng 10k.");
+    }
+  };
+
+  const [isHovered, setIsHovered] = useState(false); // Tracks if the button is being hovered
+  const [isEnabled, setIsEnabled] = useState(false); // Tracks if the button should be enabled
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    if (isHovered) {
+      timer = setTimeout(() => {
+        setIsEnabled(true);
+      }, 1000); // Enable the button after 1 seconds of hovering
+    } else {
+      setIsEnabled(false); // Reset if hover stops
+    }
+
+    return () => clearTimeout(timer); // Cleanup the timer on hover exit
+  }, [isHovered]);
+
   return (
     <div className="xl:container m-auto px-6 py-20 md:px-12 lg:px-20">
       <div className="m-auto text-center lg:w-7/12">
@@ -49,8 +117,8 @@ export default function Premium() {
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
                 <span>
-                Tính năng đánh giá tính tương thích<br/>
-                giữa hồ sơ và toàn bộ yêu cầu
+                  Tính năng đánh giá tính tương thích<br />
+                  giữa hồ sơ và toàn bộ yêu cầu
                 </span>
               </li>
               <li className="space-x-2">
@@ -120,7 +188,7 @@ export default function Premium() {
             >
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
-                <span>Truy cập thông tin chi tiết và mới nhất <br/>của các trường đại học</span>
+                <span>Truy cập thông tin chi tiết và mới nhất <br />của các trường đại học</span>
               </li>
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
@@ -129,7 +197,7 @@ export default function Premium() {
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
                 <span>
-                Mở khóa chức năng so sánh thông  <br/> tin giữa các trường đại học
+                  Mở khóa chức năng so sánh thông  <br /> tin giữa các trường đại học
                 </span>
               </li>
               <li className="space-x-2">
@@ -138,17 +206,83 @@ export default function Premium() {
               </li>
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
-                <span>Mở khóa chức năng đăng bài chia sẻ, hỏi <br/>  đáp trên diễn đàn</span>
+                <span>Mở khóa chức năng đăng bài chia sẻ, hỏi <br />  đáp trên diễn đàn</span>
               </li>
             </ul>
-            <button className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+            <button className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95"
+              onClick={() => { togglePopup(); validateAndHandleNumberInput(); }}
+
+            >
               <span className="relative text-base font-semibold text-white dark:text-dark">
                 Nâng cấp
               </span>
             </button>
           </div>
         </div>
+        {showPopup && (
+          <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-30 flex justify-center items-center z-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-3/4 max-w-md">
+              <div className="flex justify-end items-end">
+                <button
+                  // onClick={togglePopup}
+                  onClick={togglePopup}
+                  className=" text-sm flex justify-center items-center px-1 py-1 bg-red-500 text-white rounded hover:bg-red-700"
+                >
+                  Tắt
+                </button>
+              </div>
+              <h1 className="text-xl font-bold text-center mb-4">Thanh toán</h1>
 
+              {paidContent && (
+                <p
+                  id="paid_content"
+                  className="mt-4 text-sm text-gray-800 font-medium"
+                >
+                  {paidContent}
+                </p>
+              )}
+
+              {/* {userInfo ? setContent(userInfo[0].fullName) : setContent("Thanh toán dịch vụ")} */}
+
+              {qrSrc && (
+                <div className="mt-4 flex justify-center">
+                  <img
+                    src={qrSrc}
+                    alt="QR Code"
+                    className="w-150 h-150 border border-gray-300 rounded-md"
+                  />
+                </div>
+              )}
+              <div className="flex justify-center items-center">
+                <button
+                  // onClick={togglePopup}
+                  onClick={togglePopup}
+                  className="flex justify-center items-center mt-4 px-2 py-3 bg-green-500 text-white rounded hover:bg-green-800"
+                >
+                  Tôi xác nhận đã thanh toán chuyển khoản
+                </button>
+                {/* <button
+                  onMouseEnter={() => setIsHovered(true)} // Start hover tracking
+                  onMouseLeave={() => setIsHovered(false)} // Stop hover tracking
+                  onClick={() => {
+                    if (isEnabled) {
+                      alert("Button clicked!"); // Perform the action only if enabled
+                    }
+                  }}
+                  className={`flex justify-center items-center mt-4 px-4 py-3 rounded text-white ${isEnabled
+                      ? "bg-green-500 hover:bg-green-800 cursor-pointer"
+                      : "bg-gray-400 cursor-not-allowed"
+                    }`}
+                  disabled={!isEnabled} // Disable the button until it's enabled
+                >
+                  Tôi xác nhận đã thanh toán chuyển khoản
+                </button> */}
+              </div>
+              <div className="text-sm mx-5  ">Thông tin của bạn sẽ được duyệt trong vòng 12 tiếng</div>
+            </div>
+            
+          </div>
+        )}
         <div className="group relative md:col-span-1 lg:w-[32%]">
           <div
             aria-hidden="true"
@@ -171,11 +305,11 @@ export default function Premium() {
             <ul
               role="list"
               className="m-auto w-max space-y-4 pb-6 text-gray-600 dark:text-gray-300"
-              //   style={{ textAlign: "center" }}
+            //   style={{ textAlign: "center" }}
             >
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
-                <span>Truy cập thông tin chi tiết và mới nhất <br/>của các trường đại học</span>
+                <span>Truy cập thông tin chi tiết và mới nhất <br />của các trường đại học</span>
               </li>
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
@@ -184,14 +318,14 @@ export default function Premium() {
               <li className="space-x-2">
                 {/* <span className="font-semibold text-primary">✔️</span> */}
                 <small className="text-gray-400">
-                Tính năng đánh giá tính tương thích<br/>
-                giữa hồ sơ và toàn bộ yêu cầu
+                  Tính năng đánh giá tính tương thích<br />
+                  giữa hồ sơ và toàn bộ yêu cầu
                 </small>
               </li>
               <li className="space-x-2">
                 {/* <span className="font-semibold text-primary">✔️</span> */}
                 <small className="text-gray-400">
-                Cá nhân hóa giao diện người dùng
+                  Cá nhân hóa giao diện người dùng
                 </small>
               </li>
               <li className="space-x-2">
