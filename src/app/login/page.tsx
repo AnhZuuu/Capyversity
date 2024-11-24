@@ -86,7 +86,17 @@ const LoginPage: React.FC = () => {
         { email, password }
       );
       if (response.status === 201) {
-        alert("Đăng nhập thành công");
+        const userData = { email, role: email === "admin@gmail.com" ? "admin" : "user" };
+        localStorage.setItem("userInfo", JSON.stringify(userData)); // Save user info to localStorage
+
+
+        //hơi tiếc nhưng cái này trả ra 1 object nhưng k check đc thông tin gì trong object đó cả
+        // const user = findUser(email, password);
+        // console.log("HAAAAAAAAAAAAAAaa",user);
+        // if (user) {
+        //   localStorage.setItem("userInfo", JSON.stringify(user)); // Save user info to localStorage
+        // }
+        // alert("Đăng nhập thành công");
         if (email === 'admin@gmail.com') {
           router.push("/admin");
         }
@@ -102,6 +112,17 @@ const LoginPage: React.FC = () => {
       alert("Xảy ra lỗi khi đăng nhập. Vui lòng thử lại.");
     }
   };
+
+  async function findUser(email: any, password: any) {
+    const response = await axios.get("https://671b3d972c842d92c37f0b37.mockapi.io/user");
+    const users = response.data;
+
+    // Find the user with matching email and password
+    const user = users.find(
+      (u: { email: string; password: string }) => u.email === email && u.password === password
+    );
+    return user;
+  }
 
   // Only render the form after the component has mounted
   if (!isClient) {
