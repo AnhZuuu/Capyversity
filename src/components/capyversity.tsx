@@ -14,9 +14,8 @@ const Capyversity: FC = () => {
   const handleLogout = () => {
     setUserInfo(null);
     localStorage.removeItem("userInfo");
-
-
     router.push("/");
+    setShowPopup(!showPopup);
   };
   const [showPopup, setShowPopup] = useState(false);
   const togglePopup = () => {
