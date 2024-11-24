@@ -20,7 +20,7 @@ const SchoolsPage = () => {
                     <span className='text-3xl text-white text-shadow-black text-md font-bold'>Trường</span>
                     <div className='text-1xl text-white text-shadow-black text-md'>Không chỉ là du học, mà là một cuộc phiêu lưu không ngừng...</div>
                 </div>
-                {userInfo ? <Schools_Premium1/> :<Schools /> }
+                {userInfo && userInfo[0].isPremium ? <Schools_Premium1/> :<Schools /> }
                 {/*  */}
                 
             </nav>
