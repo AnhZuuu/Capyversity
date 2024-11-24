@@ -31,16 +31,27 @@ const LoginPage: React.FC = () => {
 
   useEffect(() => {
     const savedData = localStorage.getItem("userInfo");
-    if (savedData) {
-      setFormData(JSON.parse(savedData));
-    }
+    // if (savedData) {
+    //   setFormData(JSON.parse(savedData));
+    // }
     setIsClient(true); // Ensure rendering only after the component has mounted on the client
   }, []);
 
-  const validateRegister = () => {
+  async function checkUserEmail(email: string): Promise<boolean> {
+    const response = await axios.get("https://671b3d972c842d92c37f0b37.mockapi.io/user");
+    const users = response.data;
+    // Check if the email already exists in the users array
+    const userExists = users.some((u: { email: string }) => u.email === email);
+    return userExists;
+  }  
+
+  const validateRegister = async() => {
     const newErrors: { [key: string]: string } = {};
     if (!fullName) newErrors.fullName = "Bạn chưa nhập Họ và tên";
     if (!email) newErrors.email = "Bạn chưa nhập Tên đăng nhập";
+    if (email && await checkUserEmail(email)) {
+      newErrors.email = "Tên đăng nhập đã tồn tại";
+    }
     if (!password) newErrors.password = "Bạn chưa nhập Mật khẩu";
     else if (password.length < 6)
       newErrors.password = "Mật khẩu yêu cầu ít nhất 6 ký tự";
@@ -65,7 +76,7 @@ const LoginPage: React.FC = () => {
   };
 
   const handleRegister = async () => {
-    if (!validateRegister()) return;
+    if (!await validateRegister()) return;
 
     try {
       const response = await axios.post(
