@@ -14,7 +14,7 @@ const Capyversity: FC = () => {
   const handleLogout = () => {
     setUserInfo(null);
     localStorage.removeItem("userInfo");
-    
+
 
     router.push("/");
   };
@@ -77,7 +77,7 @@ const Capyversity: FC = () => {
               onClick={togglePopup}
             >
               {/* Đã đăng nhập */}
-              {userInfo ? userInfo[0].fullName: <span></span>}
+              {userInfo ? userInfo[0].fullName : <span></span>}
               {/* {userInfo.fullName} */}
             </button>
             :
@@ -90,14 +90,14 @@ const Capyversity: FC = () => {
           {showPopup && (
             <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-30 flex justify-center items-center z-50">
               <div className="bg-white p-6 rounded-lg shadow-lg w-3/4 max-w-md">
-                <p>Username: {userInfo ? userInfo[0].fullName: <span></span>}</p>
-                <p>Dob: {userInfo ? userInfo[0].dob: <span></span>}</p>
+                <p>Tên người dùng: {userInfo ? userInfo[0].fullName : <span></span>}</p>
+                <p>Sinh nhật: {userInfo ? userInfo[0].dob : <span></span>}</p>
                 <button
                   // onClick={togglePopup}
                   onClick={togglePopup}
-                  className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-yellow-600"
+                  className="mt-4 px-4 py-2 bg-yellow-300 text-white rounded hover:bg-yellow-600"
                 >
-                  Close
+                  Tắt
                 </button>
                 <br />
                 <button
@@ -105,7 +105,7 @@ const Capyversity: FC = () => {
                   onClick={handleLogout}
                   className="text-sm mx-9/10 mt-4 px-2 py-2 bg-red-500 text-white rounded hover:bg-red-900"
                 >
-                  Logout
+                  Đăng xuất
                 </button>
               </div>
 
