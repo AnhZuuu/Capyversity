@@ -77,7 +77,7 @@ const Capyversity: FC = () => {
               onClick={togglePopup}
             >
               {/* Đã đăng nhập */}
-              {userInfo ? userInfo.email: <span></span>}
+              {userInfo ? userInfo[0].fullName: <span></span>}
               {/* {userInfo.fullName} */}
             </button>
             :
@@ -90,8 +90,8 @@ const Capyversity: FC = () => {
           {showPopup && (
             <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-30 flex justify-center items-center z-50">
               <div className="bg-white p-6 rounded-lg shadow-lg w-3/4 max-w-md">
-                <p>Username: {userInfo ? userInfo.email: <span></span>}</p>
-                <p>Role: {userInfo ? userInfo.role: <span></span>}</p>
+                <p>Username: {userInfo ? userInfo[0].fullName: <span></span>}</p>
+                <p>Dob: {userInfo ? userInfo[0].dob: <span></span>}</p>
                 <button
                   // onClick={togglePopup}
                   onClick={togglePopup}
