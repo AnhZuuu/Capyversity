@@ -7,7 +7,8 @@ export default function Premium() {
       <div className="m-auto text-center lg:w-7/12">
         <h2 className="text-2xl font-bold text-white md:text-4xl">Premium</h2>
         <p className="text-sm text-gray-200">
-          Nâng cấp tài khoản để nhận được các đặc quyền và các tính năng cao cấp.
+          Nâng cấp tài khoản để nhận được các đặc quyền và các tính năng cao
+          cấp.
         </p>
       </div>
       <div className="mt-12 grid items-center gap-6 md:grid-cols-2 lg:flex lg:space-x-8">
@@ -22,15 +23,15 @@ export default function Premium() {
             </h3>
             <div className="relative flex justify-around">
               <div className="flex">
-                <span className="-ml-6 mt-2 text-3xl font-bold text-primary">
+                {/* <span className="-ml-6 mt-2 text-3xl font-bold text-primary">
                   $
-                </span>
+                </span> */}
                 <span className="leading-0 text-8xl font-bold text-gray-800 dark:text-white">
                   xx
                 </span>
               </div>
               <span className="absolute right-9 bottom-2 text-xl font-bold text-primary">
-                / Month
+                / tháng
               </span>
             </div>
             <ul
@@ -39,26 +40,26 @@ export default function Premium() {
             >
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
-                <span>Basic information search function</span>
+                <span>Chức năng tìm kiếm thông tin cơ bản</span>
               </li>
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
-                <span>Recordkeeping</span>
+                <span>Lưu trữ hồ sơ</span>
               </li>
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
                 <span>
-                  Feature to evaluate the compatibility <br />between 
-                  profile vs entire requirements
+                Tính năng đánh giá tính tương thích<br/>
+                giữa hồ sơ và toàn bộ yêu cầu
                 </span>
               </li>
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
-                <span>Personalize the user interface</span>
+                <span>Cá nhân hóa giao diện người dùng</span>
               </li>
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
-                <span>Consulting and cupport from centers</span>
+                <span>Tư vấn và hỗ trợ từ các trung tâm</span>
               </li>
             </ul>
             <button className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
@@ -79,21 +80,24 @@ export default function Premium() {
               Premium 1
             </h3>
             <div className="overflow-hidden">
-              <div className="-mr-20 flex items-end justify-center">
+              <div className="flex items-end justify-center">
                 <div className="flex">
-                  <span className="-ml-6 mt-2 text-3xl font-bold text-primary">
-                    $
-                  </span>
                   <span className="leading-0 text-8xl font-bold text-gray-800 dark:text-white">
-                    xx
+                    49
                   </span>
                 </div>
                 <div className="mb-2">
-                  <span className="block text-xl font-bold text-gray-500 dark:text-gray-400">
-                    .xx
-                  </span>
+                  <div className="flex">
+                    <span className="block text-xl font-bold text-gray-500 dark:text-gray-400">
+                      .000
+                    </span>
+                    <span className="-mt-2 text-xl font-bold text-primary">
+                      đ
+                    </span>
+                  </div>
+
                   <span className="block text-xl font-bold text-primary">
-                    / Month
+                    / tháng
                   </span>
                 </div>
               </div>
@@ -116,31 +120,30 @@ export default function Premium() {
             >
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
-                <span>Basic information search function</span>
+                <span>Truy cập thông tin chi tiết và mới nhất <br/>của các trường đại học</span>
               </li>
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
-                <span>Recordkeeping</span>
+                <span>Lưu trữ hồ sơ</span>
               </li>
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
                 <span>
-                  Feature to evaluate the compatibility <br />between 
-                  profile vs entire requirements
+                Mở khóa chức năng so sánh thông  <br/> tin giữa các trường đại học
                 </span>
               </li>
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
-                <span>Personalize the user interface</span>
+                <span>Mở khóa chức năng tìm kiếm</span>
               </li>
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
-                <span>Consulting and cupport from centers</span>
+                <span>Mở khóa chức năng đăng bài chia sẻ, hỏi <br/>  đáp trên diễn đàn</span>
               </li>
             </ul>
             <button className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
               <span className="relative text-base font-semibold text-white dark:text-dark">
-                Start plan
+                Nâng cấp
               </span>
             </button>
           </div>
@@ -172,35 +175,35 @@ export default function Premium() {
             >
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
-                <span>Basic information search function</span>
+                <span>Truy cập thông tin chi tiết và mới nhất <br/>của các trường đại học</span>
               </li>
               <li className="space-x-2">
                 <span className="font-semibold text-primary">✔️</span>
-                <span>Recordkeeping</span>
+                <span>Lưu trữ hồ sơ</span>
               </li>
               <li className="space-x-2">
                 {/* <span className="font-semibold text-primary">✔️</span> */}
                 <small className="text-gray-400">
-                  Feature to evaluate the compatitbility between <br /> profile
-                  vs entire requirements
+                Tính năng đánh giá tính tương thích<br/>
+                giữa hồ sơ và toàn bộ yêu cầu
                 </small>
               </li>
               <li className="space-x-2">
                 {/* <span className="font-semibold text-primary">✔️</span> */}
                 <small className="text-gray-400">
-                  Personalize the user interface
+                Cá nhân hóa giao diện người dùng
                 </small>
               </li>
               <li className="space-x-2">
                 {/* <span className="font-semibold text-primary">✔️</span> */}
                 <small className="text-gray-400">
-                  Consulting and support from centers
+                  Tư vấn và hỗ trợ từ các trung tâm
                 </small>
               </li>
             </ul>
             <button className="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-sky-50 before:border before:border-sky-500 dark:before:border-gray-600 dark:before:bg-gray-700 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
               <span className="relative text-base font-semibold text-sky-600 dark:text-white">
-                Get Started
+                Trải nghiệm
               </span>
             </button>
           </div>
