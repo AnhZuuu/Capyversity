@@ -18,8 +18,21 @@ const LoginPage: React.FC = () => {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    fullName: "",
+    phoneNumber: "",
+    dob: "",
+    isPremium: false,
+    isAdmin: false,
+  });
 
   useEffect(() => {
+    const savedData = localStorage.getItem("userInfo");
+    if (savedData) {
+      setFormData(JSON.parse(savedData));
+    }
     setIsClient(true); // Ensure rendering only after the component has mounted on the client
   }, []);
 
@@ -76,50 +89,92 @@ const LoginPage: React.FC = () => {
       alert("Xảy ra lỗi khi đăng ký. Vui lòng thử lại.");
     }
   };
-
-  const handleLogin = async () => {
+  const handleLogin = async (e: any) => {
     if (!validateLogin()) return;
-
-    try {
-      const response = await axios.post(
-        "https://671b3d972c842d92c37f0b37.mockapi.io/user",
-        { email, password }
-      );
-      if (response.status === 201) {
-        const userData = { email, role: email === "admin@gmail.com" ? "admin" : "user" };
-        localStorage.setItem("userInfo", JSON.stringify(userData)); // Save user info to localStorage
-
-
-        //hơi tiếc nhưng cái này trả ra 1 object nhưng k check đc thông tin gì trong object đó cả
-        // const user = findUser(email, password);
-        // console.log("HAAAAAAAAAAAAAAaa",user);
-        // if (user) {
-        //   localStorage.setItem("userInfo", JSON.stringify(user)); // Save user info to localStorage
-        // }
-        // alert("Đăng nhập thành công");
-        if (email === 'admin@gmail.com') {
-          router.push("/admin");
+    e.preventDefault();
+    if (Object.keys(errors).length === 0) {
+      try {
+        // Making API call to mock API
+        // const response = await axios.post(
+        //   "https://671b3d972c842d92c37f0b37.mockapi.io/user",
+        //   formData
+        // );
+        const response = await axios.get(
+          "https://671b3d972c842d92c37f0b37.mockapi.io/user",
+          { params: { email, password } }
+        );
+        const user = response.data.find(
+          (user: { email: string; password: string }) =>
+            user.email === email && user.password === password
+        );
+        if (user) {
+          localStorage.setItem("userInfo", JSON.stringify(response.data));
+          console.log("user", response.data);
+          alert("Login successful!");
+          if (user.isAdmin === true) {
+            router.push("/admin");
+          } else {
+            window.location.href = "/schools";
+          }
         }
-        else {
-          window.location.href = "/schools";
-        }
-        // router.push("/"); // Navigate to the home page after successful login
-      } else {
-        alert("Đăng nhập không thành công.");
+      } catch (error) {
+        console.error("Login failed:", error);
+        alert("Login failed. Please try again.");
       }
-    } catch (error: any) {
-      console.error("Login error", error);
-      alert("Xảy ra lỗi khi đăng nhập. Vui lòng thử lại.");
     }
   };
+  // const handleLogin = async () => {
+  //   if (!validateLogin()) return;
+
+  //   try {
+  //     const response = await axios.get(
+  //       "https://671b3d972c842d92c37f0b37.mockapi.io/user",
+  //       { params : {email, password} }
+  //     );
+  //     const user = response.data.find(
+  //       (user: {email: string; password: string}) =>
+  //         user.email === email && user.password === password
+  //       );
+
+  //     if (user) {
+
+  //       const userData = { email, role: email === "admin@gmail.com" ? "admin" : "user" };
+  //       localStorage.setItem("userInfo", JSON.stringify(userData)); // Save user info to localStorage
+
+  //       //hơi tiếc nhưng cái này trả ra 1 object nhưng k check đc thông tin gì trong object đó cả
+  //       // const user = findUser(email, password);
+  //       // console.log("HAAAAAAAAAAAAAAaa",user);
+  //       // if (user) {
+  //       //   localStorage.setItem("userInfo", JSON.stringify(user)); // Save user info to localStorage
+  //       // }
+  //       // alert("Đăng nhập thành công");
+  //       if (email === 'admin@gmail.com') {
+  //         router.push("/admin");
+  //       }
+  //       else {
+  //         window.location.href = "/schools";
+  //         console.log("user", user.isPremium);
+  //       }
+  //       // router.push("/"); // Navigate to the home page after successful login
+  //     } else {
+  //       alert("Đăng nhập không thành công.");
+  //     }
+  //   } catch (error: any) {
+  //     console.error("Login error", error);
+  //     alert("Xảy ra lỗi khi đăng nhập. Vui lòng thử lại.");
+  //   }
+  // };
 
   async function findUser(email: any, password: any) {
-    const response = await axios.get("https://671b3d972c842d92c37f0b37.mockapi.io/user");
+    const response = await axios.get(
+      "https://671b3d972c842d92c37f0b37.mockapi.io/user"
+    );
     const users = response.data;
 
     // Find the user with matching email and password
     const user = users.find(
-      (u: { email: string; password: string }) => u.email === email && u.password === password
+      (u: { email: string; password: string }) =>
+        u.email === email && u.password === password
     );
     return user;
   }
