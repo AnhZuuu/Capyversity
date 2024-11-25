@@ -48,6 +48,15 @@ const Capyversity: FC = () => {
 
   // const userInfo = getUserInfo();
   console.log("HEEEEEEEEEEEEE", userInfo);
+
+  function reverseDOB(dateString: any) {
+    // Split the date string into an array by the hyphen delimiter
+    const [year, month, day] = dateString.split('-');
+
+    // Return the rearranged date in "DD/MM/YYYY" format
+    return `${day}-${month}-${year}`;
+  }
+  console.log('userinfo', userInfo);
   return (
     <nav className={styles.nav}>
       <ul className={styles.list}>
@@ -89,8 +98,17 @@ const Capyversity: FC = () => {
           {showPopup && (
             <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-30 flex justify-center items-center z-50">
               <div className="bg-white p-6 rounded-lg shadow-lg w-3/4 max-w-md">
-                <p>Tên người dùng: {userInfo ? userInfo[0].fullName : <span></span>}</p>
-                <p>Sinh nhật: {userInfo ? userInfo[0].dob : <span></span>}</p>
+                {userInfo ?
+                  <div>
+                    <p>Tên người dùng: {userInfo[0].fullName}</p>
+                    <p>Tên đăng nhập: {userInfo[0].email}</p>
+                    <p>Sinh nhật: { reverseDOB(userInfo[0].dob) }</p>
+                    <p>Trạng thái: {userInfo[0].isPremium ? <span className='text-green-700 text-lg font-bold'>Đã nâng cấp</span> : <span className='text-red-400 text-lg font-bold'>Chưa nâng cấp</span> }</p>
+                  </div>
+                  : <></>}
+                {/* <p>Tên người dùng: {userInfo ? userInfo[0].fullName : <span></span>}</p>
+                <p>Sinh nhật: {userInfo ? reverseDOB(userInfo[0].dob) : <span></span>}</p>
+                <p>Trạng thái: {userInfo ? (userInfo.isPremium ? <span className='text-green-700'>Đã nâng cấp</span> : <span className='text-red-400'>Chưa nâng cấp</span>) : <span></span>}</p> */}
                 <button
                   // onClick={togglePopup}
                   onClick={togglePopup}
