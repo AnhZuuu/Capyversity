@@ -98,24 +98,33 @@ const Capyversity: FC = () => {
           {showPopup && (
             <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-30 flex justify-center items-center z-50">
               <div className="bg-white p-6 rounded-lg shadow-lg w-3/4 max-w-md">
+                <div className="flex justify-end items-end">
+                  <button
+                    // onClick={togglePopup}
+                    onClick={togglePopup}
+                    className="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+                  >
+                    Tắt
+                  </button>
+                </div>
                 {userInfo ?
                   <div>
                     <p>Tên người dùng: {userInfo[0].fullName}</p>
                     <p>Tên đăng nhập: {userInfo[0].email}</p>
-                    <p>Sinh nhật: { reverseDOB(userInfo[0].dob) }</p>
-                    <p>Trạng thái: {userInfo[0].isPremium ? <span className='text-green-700 text-lg font-bold'>Đã nâng cấp</span> : <span className='text-red-400 text-lg font-bold'>Chưa nâng cấp</span> }</p>
+                    <p>Sinh nhật: {reverseDOB(userInfo[0].dob)}</p>
+                    <p>Trạng thái: {userInfo[0].isPremium ? <span className='text-green-700 text-lg font-bold'>Đã nâng cấp</span> : <span className='text-red-400 text-lg font-bold'>Chưa nâng cấp</span>}</p>
                   </div>
                   : <></>}
                 {/* <p>Tên người dùng: {userInfo ? userInfo[0].fullName : <span></span>}</p>
                 <p>Sinh nhật: {userInfo ? reverseDOB(userInfo[0].dob) : <span></span>}</p>
                 <p>Trạng thái: {userInfo ? (userInfo.isPremium ? <span className='text-green-700'>Đã nâng cấp</span> : <span className='text-red-400'>Chưa nâng cấp</span>) : <span></span>}</p> */}
-                <button
+                {/* <button
                   // onClick={togglePopup}
                   onClick={togglePopup}
                   className="mt-4 px-4 py-2 bg-yellow-300 text-white rounded hover:bg-yellow-600"
                 >
                   Tắt
-                </button>
+                </button> */}
                 <br />
                 <button
                   // onClick={togglePopup}
