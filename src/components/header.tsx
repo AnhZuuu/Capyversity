@@ -28,7 +28,7 @@ const Header: React.FC = () => {
             >
                 Trường
             </Link>
-            <Link href='/'
+            <Link href='/news'
                 className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-transparent rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-white focus:bg-white mr-20"
             >
                 Tin tức
