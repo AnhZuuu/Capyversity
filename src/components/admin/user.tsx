@@ -247,7 +247,7 @@ const AdminUser = () => {
                                                             <b>DOB:</b> {reverseDOB((user as { dob: string })?.dob)}
                                                         </p>
                                                         <p>
-                                                            <b>Phone number:</b> {(user as { phoneNumber: string })?.phoneNumber}
+                                                            <b>Phone:</b> {(user as { phoneNumber: string })?.phoneNumber}
                                                         </p>
                                                         {/* <p>
                                                                     <b>JPLT:</b> {(uni as { JPLT: string })?.JPLT}
