@@ -113,6 +113,13 @@ const AdminUser = () => {
     const togglePopup = (id: string) => {
         setActivePopup(activePopup === id ? null : id); // If the same popup is clicked, close it, else open the new one
     };
+    function reverseDOB(dateString : any) {
+        // Split the date string into an array by the hyphen delimiter
+        const [year, month, day] = dateString.split('-');
+        
+        // Return the rearranged date in "DD/MM/YYYY" format
+        return `${day}-${month}-${year}`;
+    }
     return (
         <>
             <div className="min-h-screen bg-gray-100 p-8">
@@ -224,7 +231,7 @@ const AdminUser = () => {
                                             </td>
                                             {/* Popup */}
                                             {/* {showPopup && ( */}
-                                                {activePopup === (user as { id: string })?.id && (
+                                            {activePopup === (user as { id: string })?.id && (
                                                 <div className="fixed top-0 left-0 w-full h-full bg-gray bg-opacity-30 flex justify-center items-center z-50">
                                                     <div className="bg-white p-6 rounded-lg shadow-lg w-3/4 max-w-md">
                                                         <h3 className="text-lg font-bold mb-4">
@@ -235,6 +242,9 @@ const AdminUser = () => {
                                                         </p>
                                                         <p>
                                                             <b>Password:</b> {(user as { password: string })?.password}
+                                                        </p>
+                                                        <p>
+                                                            <b>DOB:</b> {reverseDOB((user as { dob: string })?.dob)}
                                                         </p>
                                                         <p>
                                                             <b>Phone number:</b> {(user as { phoneNumber: string })?.phoneNumber}
