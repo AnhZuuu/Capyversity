@@ -1,8 +1,9 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState, lazy, Suspense } from "react";
-
+// import AdminUser from "@/components/admin/user";
 const AdminUser = lazy(() => import("@/components/admin/user"));
+
 const AdminSchool = lazy(() => import("@/components/admin/school"));
 const AdminNews = lazy(() => import("@/components/admin/news"));
 const AdminBlog = lazy(() => import("@/components/admin/blog"));

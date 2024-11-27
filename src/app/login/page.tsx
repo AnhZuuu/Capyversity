@@ -124,7 +124,7 @@ const LoginPage: React.FC = () => {
           console.log("user", response.data);
           // alert("Login successful!");
           if (user.isAdmin === true) {
-            router.push("/admin");
+            router.push("/admin2");
           } else {
             window.location.href = "/schools";
           }

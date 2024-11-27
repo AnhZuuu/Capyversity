@@ -6,8 +6,8 @@
 }
 
 .cardItem {
-    width: 500px;
-    height: 300px;
+    width: 80vw;
+    height: 100vh;
     padding: 30px;
     margin: 50px;
     background-color: aliceblue;
