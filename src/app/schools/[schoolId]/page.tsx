@@ -47,6 +47,10 @@ const SchoolDetailPage = () => {
     }))
   : [];
 
+  const subAddress = data.subAddress
+  ? data.subAddress.split(";").map((address: any) => address.trim())
+  : [];
+
   // const rankings = data.ranking
   // .split(", ") // Split the string into an array by ", "
   // .map((category : any, index : any) => ({
@@ -125,7 +129,18 @@ const SchoolDetailPage = () => {
                   <div>
                     <h3 className="font-semibold">Campus phụ</h3>
                     {/* <p>City and Paddington Campuses: Gadigal, UNSW Canberra: Ngunnawal</p> */}
-                    <p>{data.subAddress}</p>
+                    {/* <p>{data.subAddress}</p> */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {subAddress.map((address : any, index : any) => (
+                        <div
+                          key={index}
+                          className="p-4 bg-gray-100 rounded-md shadow-sm hover:shadow-md transition-shadow"
+                        >
+                          <h3 className="text-sm font-medium text-gray-700">{address}</h3>
+                        </div>
+                      ))}
+                    </div>
+
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     {/* <div>

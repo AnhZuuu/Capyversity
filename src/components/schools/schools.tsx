@@ -19,6 +19,14 @@ const Schools = () => {
             .then(data => { setData(data) })
     }, []);
     const router = useRouter();
+
+//     const rankings = data.ranking
+//   ? data.ranking.split(", ").map((category : any, index : any) => ({
+//       category: category.trim(),
+//       rank: `#${index + 1}`,
+//     }))
+//   : [];
+  
     return (
         <div className={styles.card}>
             {data.map((uni, idx) => (
