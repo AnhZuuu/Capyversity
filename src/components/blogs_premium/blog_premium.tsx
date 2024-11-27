@@ -23,7 +23,7 @@ interface Comment {
   text: string;
 }
 
-const Blogs = () => {
+const BlogPremium = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [expandedPost, setExpandedPost] = useState<string | null>(null);
   const [selectedPost, setSelectedPost] = useState<string | null>(null);
@@ -78,7 +78,7 @@ const Blogs = () => {
         <div className="relative flex-1 mb-6">
           <input
             type="text"
-            placeholder="Tìm kiếm bài viết..."
+            placeholder="Search news..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -371,4 +371,4 @@ const Blogs = () => {
   // );
 };
 
-export default Blogs;
+export default BlogPremium;

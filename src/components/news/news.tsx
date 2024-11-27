@@ -53,7 +53,7 @@ const News = () => {
               navigation
               pagination={{ clickable: true }}
               autoplay={{ delay: 3000, disableOnInteraction: false }}
-              className="rounded-xl overflow-hidden h-[400px] w-[900px]"
+              className="rounded-xl overflow-hidden h-[450px] w-[80%]"
             >
               {data.map((item) => (
                 <SwiperSlide key={(item as { id: string })?.id}>
@@ -80,7 +80,7 @@ const News = () => {
             <div className="relative flex-1">
               <input
                 type="text"
-                placeholder="Search news..."
+                placeholder="Tìm tin tức..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -150,11 +150,12 @@ const News = () => {
                   >
                     <p className="text-gray-600">
                       {(item as { content: string })?.content}{" "}
+                      <br/>
                       <a
                         href={`${(item as { link: string })?.link}`}
                         className="text-blue-400 hover:underline"
                       >
-                        Đọc thêm
+                        Tìm hiểu thêm
                       </a>
                     </p>
                     {expandedId !== (item as { id: string })?.id && (
@@ -178,7 +179,7 @@ const News = () => {
                   </button>
                 </div>
               </motion.article>
-            ))}
+            ))}          
           </AnimatePresence>
         </div>
 
