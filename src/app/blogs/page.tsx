@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useState } from 'react'
 import "@/app/css/App.css";
 import Blogs from '@/components/blogs/blogs';
