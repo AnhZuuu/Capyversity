@@ -80,7 +80,7 @@ const AdminDashboard = () => {
         </BarChart>
       </div>
       <div className="bg-white p-4 rounded-lg shadow-md">
-        <h3 className="text-lg font-semibold mb-4">Users' behavior</h3>
+        <h3 className="text-lg font-semibold mb-4">Users behavior</h3>
         <PieChart width={400} height={300}>
           <Pie
             data={pieChartData}
