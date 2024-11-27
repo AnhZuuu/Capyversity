@@ -31,6 +31,7 @@
     "react-router-dom": "^6.26.2",
     "react-toastify": "^10.0.6",
     "recharts": "^2.13.3"
+    "swiper": "^11.1.15"
   },
   "devDependencies": {
     "@types/node": "20.9.2",
