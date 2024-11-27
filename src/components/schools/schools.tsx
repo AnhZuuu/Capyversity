@@ -39,7 +39,7 @@ const Schools = () => {
                                     height={150}
                                 />
                                 <div className='flex-col'>
-                                    <div className='text-[10px]'>IELTS: <b>{ (uni as { IELTS: string })?.IELTS }</b></div>
+                                    {/* <div className='text-[10px]'>IELTS: <b>{ (uni as { IELTS: string })?.IELTS }</b></div> */}
                                     <br/>
                                     <div className ="max-w-24 text-[10px]">Các bậc: <b>{ (uni as { ranking: string })?.ranking }</b></div>
                                     {/* <div>HSK: <b>{uni.HSK}</b></div>
