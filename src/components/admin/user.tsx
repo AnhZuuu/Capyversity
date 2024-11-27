@@ -53,6 +53,42 @@ const AdminUser = () => {
             .then(data => { setData(data) })
     }, []);
 
+    // function togglePremium(
+    //     userId: string,
+    //     data: any[],
+    //     setData: React.Dispatch<React.SetStateAction<any[]>>
+    // ) {
+    //     // Update local state
+    //     setData((prevData) =>
+    //         prevData.map((user) =>
+    //             user.id === userId ? { ...user, isPremium: !user.isPremium } : user
+    //         )
+    //     );
+
+    //     // Update the backend API
+    //     const userToUpdate = data.find((user) => user.id === userId);
+    //     if (userToUpdate) {
+    //         fetch(`https://671b3d972c842d92c37f0b37.mockapi.io/user/${userId}`, {
+    //             method: "PUT",
+    //             headers: { "Content-Type": "application/json" },
+    //             body: JSON.stringify({ isPremium: !userToUpdate.isPremium }),
+    //         });
+    //     }
+    // }
+    // function togglePremium(userId: string, setData: React.Dispatch<React.SetStateAction<any[]>>) {
+    //     setData((prevData) =>
+    //       prevData.map((user) =>
+    //         user.id === userId ? { ...user, isPremium: !user.isPremium } : user
+    //       )
+    //     );
+
+    //     // Optional: Fetch the previous user state from prevData to sync with API
+    //     fetch(`https://671b3d972c842d92c37f0b37.mockapi.io/user/${userId}`, {
+    //       method: "PUT",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify({ isPremium: !prevData.find((user) => user.id === userId)?.isPremium }),
+    //     });
+    // }
     const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -116,7 +152,6 @@ const AdminUser = () => {
     function reverseDOB(dateString : any) {
         // Split the date string into an array by the hyphen delimiter
         const [year, month, day] = dateString.split('-');
-        
         // Return the rearranged date in "DD/MM/YYYY" format
         return `${day}-${month}-${year}`;
     }
@@ -193,15 +228,16 @@ const AdminUser = () => {
                                                 {(user as { isAdmin: boolean })?.isAdmin === true ? "Admin" : "User"}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap">
-                                                <span
+                                                <button
                                                     className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${(user as { isPremium: boolean })?.isPremium === true ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}
+                                                // onClick={() => togglePremium(user.id, data, setData)}
                                                 >
                                                     {/* {user.status} */}
                                                     {/* {(user as { isAdmin: boolean })?.isAdmin === true ? "" : ``} */}
                                                     {/* {(user as { isPremium: boolean })?.isPremium === true ? "Premium" : "Normal"} */}
                                                     {(user as { isAdmin: boolean })?.isAdmin === true ? "" : `${(user as { isPremium: boolean })?.isPremium === true ? "Premium" : "Normal"}`}
 
-                                                </span>
+                                                </button>
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                 <div className="flex space-x-3">
@@ -228,6 +264,20 @@ const AdminUser = () => {
                                                         <FaTrash className="h-5 w-5" />
                                                     </button>
                                                 </div>
+                                                {/* <div className="space-y-4">
+                                                    {data.map((user: { id: string; isPremium: boolean; isAdmin: boolean }) => (
+                                                        <div key={user.id} className="flex items-center space-x-4">
+                                                            <span className="font-bold">{`User ID: ${user.id}`}</span>
+                                                            <button
+                                                                className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${user.isPremium ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                                                                    }`}
+                                                                onClick={() => togglePremium(user.id, data, setData)}
+                                                            >
+                                                                {user.isAdmin ? "" : user.isPremium ? "Premium" : "Normal"}
+                                                            </button>
+                                                        </div>
+                                                    ))}
+                                                </div> */}
                                             </td>
                                             {/* Popup */}
                                             {/* {showPopup && ( */}
