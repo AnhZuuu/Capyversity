@@ -18,7 +18,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en"  style={{backgroundColor: '#383434'}}>
+    // <html lang="en"  style={{backgroundColor: '#383434'}}>
+    <html lang="en"  style={{backgroundColor: '#00001C'}}>
       <body className={inter.className}>
         <StyledComponentsRegistry>
           <Capyversity/>

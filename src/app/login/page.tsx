@@ -145,7 +145,8 @@ const LoginPage: React.FC = () => {
     <div className="bg-gradient-to-r from-gray-800 to-black">
       
       <div className="min-h-screen flex items-center justify-center p-4">
-        <div className="bg-[#383434] rounded-xl shadow-2xl w-full max-w-md p-8 transform transition-all duration-300">
+        {/* <div className="bg-[#383434] rounded-xl shadow-2xl w-full max-w-md p-8 transform transition-all duration-300"> */}
+        <div className="bg-[#00001C] rounded-xl shadow-2xl w-full max-w-md p-8 transform transition-all duration-300">
         <p className="text-gray-400">          
           <a className="text-white hover:underline" href="/">
             <FaHome/>
