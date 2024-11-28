@@ -136,13 +136,15 @@ const Blogs = () => {
                     {expandedPost === item.id ? "Show less" : "Read more"}
                   </button>
                 )}
+                <div className="flex justify-center bg-gray-100">
                 {item.image && (
                   <img
                     src={item.image}
                     alt=""
-                    className="w-full h-64 object-cover rounded-lg mb-4"
+                    className="w-[90%] h-90 object-cover rounded-lg"
                   />
                 )}
+                </div>
 
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                   <div className="flex items-center space-x-6">

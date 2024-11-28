@@ -8,7 +8,9 @@ const Footer: React.FC = () => {
   return (
     <>
       <footer>
-        <div className="bg-white dark:bg-gray-800" style={{paddingTop : "2rem"}}>
+        {/* <div className="bg-white dark:bg-gray-800" style={{paddingTop : "2rem"}}> */}
+        <div className="bg-white dark:bg-gray-800">
+
           <div className="container m-auto space-y-8 px-6 text-gray-600 dark:text-gray-200 md:px-12 lg:px-20">
             <div className="grid grid-cols-8 gap-6 md:gap-0">
               <div className="col-span-8 border-r border-gray-300 dark:border-gray-100 md:col-span-2 lg:col-span-3">
@@ -61,10 +63,42 @@ const Footer: React.FC = () => {
               <div className="col-span-8 md:col-span-6 lg:col-span-5">
                 <div className="grid grid-cols-2 gap-6 pb-8 sm:grid-cols-3 md:pl-16">
                   <div>
-                    <h6 className="text-lg font-medium text-gray-800 dark:text-gray-200">
-                      Company
+                    <h6 className="text-lg font-medium text-gray-800 dark:text-gray-200 mt-4">
+                     Trường
                     </h6>
                     <ul className="mt-4 list-inside space-y-4">
+                      <li>
+                        <a href="/schools" className="transition hover:text-cyan-600">
+                          Khu vực Mỹ
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/schools" className="transition hover:text-cyan-600">
+                          Khu vực Anh
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/schools" className="transition hover:text-cyan-600">
+                          Khu vực Úc
+                        </a>
+                      </li>
+                      {/* <li>
+                        <a href="#" className="transition hover:text-cyan-600">
+                          Partners
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className="transition hover:text-cyan-600">
+                          Jobs
+                        </a>
+                      </li> */}
+                    </ul>
+                  </div>
+                  <div>
+                    <h6 className="text-lg font-medium text-gray-800 dark:text-gray-200 mt-4">
+                      Tin tức
+                    </h6>
+                    {/* <ul className="mt-4 list-inside space-y-4">
                       <li>
                         <a href="#" className="transition hover:text-cyan-600">
                           About
@@ -90,45 +124,13 @@ const Footer: React.FC = () => {
                           Jobs
                         </a>
                       </li>
-                    </ul>
+                    </ul> */}
                   </div>
                   <div>
-                    <h6 className="text-lg font-medium text-gray-800 dark:text-gray-200">
-                      Products
+                    <h6 className="text-lg font-medium text-gray-800 dark:text-gray-200 mt-4">
+                      Chia sẻ
                     </h6>
-                    <ul className="mt-4 list-inside space-y-4">
-                      <li>
-                        <a href="#" className="transition hover:text-cyan-600">
-                          About
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="transition hover:text-cyan-600">
-                          Customers
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="transition hover:text-cyan-600">
-                          Enterprise
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="transition hover:text-cyan-600">
-                          Partners
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="transition hover:text-cyan-600">
-                          Jobs
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h6 className="text-lg font-medium text-gray-800 dark:text-gray-200">
-                      Resources
-                    </h6>
-                    <ul className="mt-4 list-inside space-y-4">
+                    {/* <ul className="mt-4 list-inside space-y-4">
                       <li>
                         <a href="#" className="transition hover:text-cyan-600">
                           About
@@ -154,7 +156,7 @@ const Footer: React.FC = () => {
                           Consultancy
                         </a>
                       </li>
-                    </ul>
+                    </ul> */}
                   </div>
                 </div>
                 <div className="flex justify-between border-t border-gray-300 dark:border-gray-100 py-4 pb-8 md:pl-16">
