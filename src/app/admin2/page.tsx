@@ -23,18 +23,17 @@ const AdminDashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const dummyChartData = [
-    { name: "Jan", users: 400, schools: 240 },
-    { name: "Feb", users: 300, schools: 139 },
-    { name: "Mar", users: 200, schools: 980 },
-    { name: "Apr", users: 278, schools: 390 },
-    { name: "May", users: 189, schools: 480 },
+    { name: "Tháng 9", users: 400, schools: 240 },
+    { name: "Tháng 10", users: 300, schools: 139 },
+    { name: "Tháng 11", users: 200, schools: 980 },
+    { name: "Tháng 12", users: 278, schools: 390 },
   ];
 
   const pieChartData = [
-    { name: "Users", value: 400 },
-    { name: "Schools", value: 300 },
-    { name: "News", value: 300 },
-    { name: "Blogs", value: 200 },
+    // { name: "Users", value: 400 },
+    { name: "Trường", value: 300 },
+    { name: "Tin Tức", value: 300 },
+    { name: "Chia sẻ", value: 200 },
   ];
 
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
@@ -74,7 +73,7 @@ const AdminDashboard = () => {
 
   const DashboardSection = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
-      <div className="bg-white p-4 rounded-lg shadow-md">
+      {/* <div className="bg-white p-4 rounded-lg shadow-md">
         <h3 className="text-lg font-semibold mb-4">User Statistics</h3>
         <BarChart width={500} height={300} data={dummyChartData}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -85,9 +84,9 @@ const AdminDashboard = () => {
           <Bar dataKey="users" fill="#8884d8" />
           <Bar dataKey="schools" fill="#82ca9d" />
         </BarChart>
-      </div>
+      </div> */}
       <div className="bg-white p-4 rounded-lg shadow-md">
-        <h3 className="text-lg font-semibold mb-4">Users behavior</h3>
+        <h3 className="text-lg font-semibold mb-4">Người dùng quan tâm</h3>
         <PieChart width={400} height={300}>
           <Pie
             data={pieChartData}
