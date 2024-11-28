@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react"
 import "@/app/css/App.css";
 import { FaSort, FaSortUp, FaSortDown, FaEdit, FaTrash, FaEye } from "react-icons/fa";
+import { FaUserCircle, FaCrown } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -149,7 +150,7 @@ const AdminUser = () => {
     const togglePopup = (id: string) => {
         setActivePopup(activePopup === id ? null : id); // If the same popup is clicked, close it, else open the new one
     };
-    function reverseDOB(dateString : any) {
+    function reverseDOB(dateString: any) {
         // Split the date string into an array by the hyphen delimiter
         const [year, month, day] = dateString.split('-');
         // Return the rearranged date in "DD/MM/YYYY" format
@@ -282,50 +283,98 @@ const AdminUser = () => {
                                             {/* Popup */}
                                             {/* {showPopup && ( */}
                                             {activePopup === (user as { id: string })?.id && (
-                                                <div className="fixed top-0 left-0 w-full h-full bg-gray bg-opacity-30 flex justify-center items-center z-50">
-                                                    <div className="bg-white p-6 rounded-lg shadow-lg w-3/4 max-w-md">
-                                                        <h3 className="text-lg font-bold mb-4">
-                                                            Details of {(user as { fullName: string })?.fullName}
-                                                        </h3>
-                                                        <p>
-                                                            <b>Email:</b> {(user as { email: string })?.email}
-                                                        </p>
-                                                        <p>
-                                                            <b>Password:</b> {(user as { password: string })?.password}
-                                                        </p>
-                                                        <p>
-                                                            <b>DOB:</b> {reverseDOB((user as { dob: string })?.dob)}
-                                                        </p>
-                                                        <p>
-                                                            <b>Phone:</b> {(user as { phoneNumber: string })?.phoneNumber}
-                                                        </p>
-                                                        {/* <p>
-                                                                    <b>JPLT:</b> {(uni as { JPLT: string })?.JPLT}
-                                                                </p>
-                                                                <p>
-                                                                    <b>Ranking:</b> {(uni as { ranking: string })?.ranking}
-                                                                </p>
-                                                                <p>
-                                                                    <b>Link:</b>{' '}
-                                                                    <a
-                                                                        href={(uni as { link: string })?.link}
-                                                                        target="_blank"
-                                                                        rel="noopener noreferrer"
-                                                                        className="text-blue-500 underline"
-                                                                    >
-                                                                        {(uni as { link: string })?.link}
-                                                                    </a>
-                                                                </p> */}
-                                                        <button
-                                                            // onClick={togglePopup}
-                                                            onClick={() => togglePopup((user as { id: string })?.id)}
-
-                                                            className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                                                <>
+                                                    <div className='fixed top-0 left-0 w-full h-full flex justify-center items-center z-50'>
+                                                        <div
+                                                            id="profile-popup"
+                                                            role="dialog"
+                                                            aria-modal="true"
+                                                            className="bg-white rounded-xl shadow-2xl p-6 max-w-md w-full mx-4 transform transition-all duration-300 ease-in-out"
+                                                            onClick={(e) => e.stopPropagation()}
                                                         >
-                                                            Close
-                                                        </button>
+                                                            <div className="flex justify-between items-center mb-6">
+                                                                <h2 className="text-2xl font-semibold text-gray-800">Thông tin tài khoản</h2>
+                                                                <div className="flex justify-end items-end">
+                                                                    <button
+                                                                        // onClick={togglePopup}
+                                                                        onClick={() => togglePopup((user as { id: string })?.id)}
+                                                                        className="px-2 py-1 bg-green-300 text-white rounded hover:bg-green-600"
+                                                                    >
+                                                                        ✖
+                                                                    </button>
+                                                                </div>
+                                                                {/* <button
+                      onClick={() => setIsOpen(false)}
+                      className="text-gray-500 hover:text-gray-700 transition-colors duration-200"
+                      aria-label="Close profile popup"
+                    >
+                      <IoMdClose size={24} />
+                    </button> */}
+                                                            </div>
+
+                                                            <div className="space-y-6">
+                                                                <div className="flex items-center justify-center">
+                                                                    <div className="relative">
+                                                                        <img
+                                                                            src={"https://i.pinimg.com/736x/e4/50/9d/e4509dbf81623e547be4b300036a0a7b.jpg"}
+                                                                            alt={(user as { fullName: string })?.fullName}
+                                                                            className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
+                                                                        />
+                                                                        {(user as { isPremium: boolean })?.isPremium && (
+                                                                            <span className="absolute bottom-0 right-0 bg-yellow-400 text-xs font-bold px-2 py-1 rounded-full shadow-md">
+                                                                                PREMIUM
+                                                                            </span>
+                                                                        )}
+                                                                    </div>
+                                                                </div>
+
+                                                                <div className="space-y-4">
+                                                                    <div>
+                                                                        <label className="text-sm text-gray-500 block">Họ tên</label>
+                                                                        <p className="text-gray-800 font-medium">{(user as { fullName: string })?.fullName || "Not provided"}</p>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <label className="text-sm text-gray-500 block">Tên đăng nhập</label>
+                                                                        <p className="text-gray-800 font-medium">{(user as { email: string })?.email || "Not provided"}</p>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <label className="text-sm text-gray-500 block">Sinh nhật</label>
+                                                                        <p className="text-gray-800 font-medium">
+                                                                            {(user as { dob: string })?.dob ? reverseDOB((user as { dob: string })?.dob) : "Not provided"}
+                                                                        </p>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <label className="text-sm text-gray-500 block">Trạng thái tài khoản</label>
+                                                                        <p className="text-gray-800 font-medium flex items-center space-x-2">
+                                                                            <span
+                                                                            // className={`inline-block w-2 h-2 rounded-full ${userInfo[0].isPremium ? "bg-green-500" : "bg-gray-500"
+                                                                            //   }`}
+                                                                            ><FaCrown className="mr-3" style={{ color: (user as { isPremium: boolean })?.isPremium ? "#10B981" : "#EF4444" }} /></span>
+                                                                            {/* <span {userInfo[0].isPremium ? { className="text-green-400" } : { className="text-red-400" }}>
+
+                          {userInfo[0].isPremium ? "Premium Member" : "Standard Member"}
+                        </span> */}
+                                                                            <span className={(user as { isPremium: boolean })?.isPremium ? "text-green-500" : "text-red-400"}>
+                                                                                {(user as { isPremium: boolean })?.isPremium ? "Premium Member" : "Standard Member"}
+                                                                            </span>
+
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <button
+                                                                    
+                                                                    className="w-full mt-6 flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg transition-colors duration-200"
+                                                                >
+                                                                    <span>Chặn tài khoản</span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </>
                                             )}
 
                                         </tr>
