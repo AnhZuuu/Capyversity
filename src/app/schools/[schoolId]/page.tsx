@@ -14,7 +14,7 @@ import { FaGlobe, FaMapMarkerAlt, FaGraduationCap, FaUniversity } from "react-ic
 const SchoolDetailPage = () => {
   const { schoolId } = useParams();
     const [data, setData] = useState<any>([])
-  const [activeTab, setActiveTab] = useState("overview");
+  const [activeTab, setActiveTab] = useState("Thông tin");
   useEffect(() => {
     fetch(`https://66fd67c269936930895514d7.mockapi.io/School/${schoolId}`)
         .then(response => response.json())
@@ -98,7 +98,7 @@ const SchoolDetailPage = () => {
         {/* Navigation Tabs */}
         <div className="border-b">
           <nav className="flex space-x-8 px-8">
-            {["overview", "programs", "requirements", "gallery"].map((tab) => (
+            {["Thông tin", "Chương trình", "Đầu vào", "Ảnh"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -116,7 +116,7 @@ const SchoolDetailPage = () => {
 
         {/* Content Section */}
         <div className="p-8">
-          {activeTab === "overview" && (
+          {activeTab === "Thông tin" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <h2 className="text-2xl font-bold mb-4">Thông tin cơ bản</h2>
@@ -176,7 +176,7 @@ const SchoolDetailPage = () => {
             </div>
           )}
 
-          {activeTab === "programs" && (
+          {activeTab === "Chương trình" && (
             <div>
               {/* <h2 className="text-2xl font-bold mb-6">Academic Programs</h2> */}
               <h2 className="text-2xl font-bold mb-6">Các ngành học trong trường</h2>
@@ -194,46 +194,24 @@ const SchoolDetailPage = () => {
             </div>
           )}
 
-          {activeTab === "requirements" && (
+          {activeTab === "Đầu vào" && (
             <div>
               <h2 className="text-2xl font-bold mb-6">Yêu cầu tuyển sinh</h2>
               <div className="bg-gray-50 p-6 rounded-lg">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                  {data.IELTS === '' ? 
-                    <></> :  
-                    <div>
-                      <h3 className="font-semibold">IELTS</h3>
-                      <p>{data.IELTS}</p>
-                    </div> 
-                    }
-                    {data.TOEIC === '' ? 
-                    <></> :  
-                    <div>
-                      <h3 className="font-semibold">TOEIC</h3>
-                      <p>{data.TOEIC}</p>
-                    </div> 
-                    }
-                    {data.HSK === '' ? 
-                    <></> :  
-                    <div>
-                      <h3 className="font-semibold">HSK</h3>
-                      <p>{data.HSK}</p>
-                    </div> 
-                    }
-                    {data.JPLT === '' ? 
-                    <></> :  
-                    <div>
-                      <h3 className="font-semibold">JPLT</h3>
-                      <p>{data.JPLT}</p>
-                    </div> 
-                    }
-                
-                </div>
+              {data.img5 ? 
+                  <img
+                  // src={`https://${schoolImages[0]}`}
+                  src={data.img5}
+                  alt={data.name}
+                  className="w-full h-full object-cover"
+                />
+                  :
+                  <></>}
               </div>
             </div>
           )}
 
-          {activeTab === "gallery" && (
+          {activeTab === "Ảnh" && (
             <div>
               <h2 className="text-2xl font-bold mb-6">Kho ảnh</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
