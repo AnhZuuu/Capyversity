@@ -5,6 +5,7 @@ import Image from 'next/image';
 // import capyversity from '../../public/capyversity.png'
 // import capyversity_rmbg from '../../public/capyversity-removebg.png';
 import capyversity_rmbg from '../../public/capyversity-removebg.png';
+// import capyversity_rmbg from '../../public/capyversity_rmbg.png';
 import { FiLogOut } from "react-icons/fi";
 import { FaUserCircle, FaCrown } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
