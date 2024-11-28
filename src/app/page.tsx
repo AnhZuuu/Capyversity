@@ -1,3 +1,4 @@
+"use client";
 import "@/app/css/App.css";
 import { url } from "inspector";
 // import '../'
@@ -6,12 +7,49 @@ import logoFB from "../../public/logoFb.png";
 import logoInstagram from "../../public/logoIns.png";
 import logoGmail from "../../public/logoGmail.png";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { FaCalendar, FaUser } from "react-icons/fa";
 
 export default function Home() {
-  async function create(formData: FormData) {
-    "use server";
-    console.log(">>>>check form data: ", formData.get("username"));
-  }
+  const [news, setNews] = useState([]);
+  const [blogs, setBlogs] = useState([]);
+  const [blogIndex, setBlogIndex] = useState(0);
+  const [schools, setSchools] = useState([]);
+
+  // async function create(formData: FormData) {
+  //   "use server";
+  //   console.log(">>>>check form data: ", formData.get("username"));
+  // }
+
+  // Fetch the news from the API
+  const fetchNews = async () => {
+    try {
+      await fetch(`https://66fed8002b9aac9c997d9378.mockapi.io/news`)
+        .then((response) => response.json())
+        .then((data) => {
+          setNews(data);
+        });
+    } catch (error) {
+      console.error("Error fetching news:", error);
+    }
+  };
+
+  const fetchBlogs = async () => {
+    try {
+      await fetch(`https://66fed8002b9aac9c997d9378.mockapi.io/blog`)
+        .then((response) => response.json())
+        .then((data) => {
+          setBlogs(data);
+        });
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchNews();
+    fetchBlogs();
+  }, []);
 
   return (
     <>
@@ -21,7 +59,7 @@ export default function Home() {
             Relax, Enjoy and Explore
             <br className="lg:block hidden" />{" "}
             <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary dark:from-primaryLight dark:to-secondaryLight">
-              the world
+              the World
             </span>
             .
           </h1>
@@ -68,8 +106,8 @@ export default function Home() {
                     <Image
                       src={logoInstagram}
                       alt="Instagram logo"
-                      width={20}
-                      height={18}
+                      width={28}
+                      height={28}
                     />
                     <span className="hidden font-medium md:block text-white">
                       Instagram
@@ -85,8 +123,8 @@ export default function Home() {
                     <Image
                       src={logoGmail}
                       alt="Gmail logo"
-                      width={20}
-                      height={20}
+                      width={28}
+                      height={28}
                     />
                     <span className="hidden font-medium md:block text-white">
                       Capyversity@gmail.com
@@ -147,131 +185,154 @@ export default function Home() {
               <h2 className="mt-4 text-2xl font-bold text-white md:text-4xl">
                 Trường
               </h2>
-              <h2 className="mt-4 text-2xl text-white md:text-2xl">
-                Không chỉ là du học, mà là một cuộc phiêu lưu không ngừng...
-              </h2>
+              <div className="flex flex-col md:flex-row justify-between space-y-4 md:space-y-0">
+                <h2 className="mt-4 text-2xl text-white md:text-2xl">
+                  Không chỉ là du học, mà là một cuộc phiêu lưu không ngừng...
+                </h2>
+                <a
+                  href="/schools"
+                  className="flex items-center text-white group-hover:text-blue"
+                >
+                  <b className="text-sm">Xem thêm</b>
+                </a>
+              </div>
             </div>
-            <div className="mt-8 grid divide-x divide-y divide-gray-100 dark:divide-gray-700 overflow-hidden sm:grid-cols-2 lg:grid-cols-3 lg:divide-y-0 xl:grid-cols-3">
-              <div
-                className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-2xl mr-8 mt-8"
-                style={{
-                  backgroundImage:
-                    "url('https://www.busytourist.com/wp-content/uploads/2019/05/Gyeongbokgung-Palace.jpg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  height: 400,
-                }}
-              >
-                <div className="relative space-y-8 py-12 p-8">
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-black transition">
-                      Trường ở Hàn Quốc
-                    </h5>
-                    <p className="text-sm text-gray-100">
-                      Khi bạn du học tại Hàn Quốc, bạn có thể hoàn thành các
-                      khóa học từ kinh doanh, truyền thông và phương tiện truyền
-                      thông đến ngôn ngữ, văn hóa, triết học Hàn Quốc, v.v.
-                    </p>
-                    <a
-                      href="/schools"
-                      className="flex items-center text-white group-hover:text-primary"
-                    >
-                      <b className="text-sm">Tìm hiểu thêm</b>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 ml-2"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </a>
+            <div className="mt-8 grid divide-x divide-y divide-gray-700 sm:grid-cols-2 lg:grid-cols-3 lg:divide-y-0 xl:grid-cols-3">
+              <div className="flex space-x-5 pb-4">
+                {/* <div className="mt-8 grid divide-x divide-y divide-gray-700 sm:grid-cols-2 lg:grid-cols-3 lg:divide-y-0 xl:grid-cols-3"> */}
+                <div className="flex-none w-full h-full relative rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
+                  <div
+                    className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-2xl mr-8 mt-8"
+                    style={{
+                      backgroundImage:
+                        "url('https://ffg.vn/wp-content/uploads/2021/01/mui-gio-my-viet-nam-2.jpg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      height: 300,
+                    }}
+                  >
+                    <div className="py-32 p-8 absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent">
+                      <div className="space-y-2">
+                        <h5 className="text-xl font-bold text-black transition">
+                          Du học Mỹ
+                        </h5>
+                        <p className="text-sm text-gray-100" style={{ textShadow: 'black 1px 0 10px' }}>
+                          Mở ra cơ hội học tập tại các trường đại học
+                          danh tiếng, tiếp cận nền giáo dục chất lượng cao và
+                          trải nghiệm văn hóa đa dạng, chuẩn bị cho tương lai
+                          vững chắc.
+                        </p>
+                        <a
+                          href="/schools"
+                          className="flex items-center text-white group-hover:text-secondary"
+                        >
+                          <b className="text-sm">Tìm hiểu thêm</b>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 ml-2"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-2xl mr-8 mt-8"
-                style={{
-                  backgroundImage:
-                    "url('https://www.state.gov/wp-content/uploads/2019/04/Japan-2107x1406.jpg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  height: 400,
-                }}
-              >
-                <div className="relative space-y-8 py-12 p-8">
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-black transition ">
-                      Trường ở Nhật Bản
-                    </h5>
-                    <p className="text-sm text-gray-200">
-                      Từ thủ đô hiện đại nhưng vẫn truyền thống Tokyo đến thủ đô
-                      văn hóa giàu đền chùa và quán trà Kyoto.
-                    </p>
-                    <a
-                      href="/schools"
-                      className="flex items-center text-white group-hover:text-secondary"
-                    >
-                      <b className="text-sm">Tìm hiểu thêm</b>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 ml-2"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </a>
+                <div className="flex-none w-full h-full relative rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
+                  <div
+                    className="group relative bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-2xl mr-8 mt-8"
+                    style={{
+                      backgroundImage:
+                        "url('https://i.gocollette.com/img/destination-page/europe/england-wales/england-ms1.jpg?h=720&w=1280&la=en-CA')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      height: 300,
+                    }}
+                  >
+                    <div className="py-32 p-8 absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent">
+                      <div className="space-y-2">
+                        <h5 className="text-xl font-bold text-black transition ">
+                          Du học Anh
+                        </h5>
+                        <p className="text-sm text-gray-200">
+                          Sinh viên có cơ hội tiếp cận nền giáo dục chất
+                          lượng, với chương trình học ngắn hạn tiết kiệm thời gian,
+                          môi trường đa văn hóa và cơ hội phát triển nghề nghiệp
+                          toàn cầu.
+                        </p>
+                        <a
+                          href="/schools"
+                          className="flex items-center text-white group-hover:text-secondary"
+                        >
+                          <b className="text-sm">Tìm hiểu thêm</b>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 ml-2"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-2xl mr-8 mt-8"
-                style={{
-                  backgroundImage:
-                    "url('https://img.dipont.com/2019/01/rdfz-renmin-beijing.jpg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  height: 400,
-                }}
-              >
-                <div className="relative space-y-8 py-12 p-8">
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-black transition">
-                      Trường ở Trung Quốc
-                    </h5>
-                    <p className="text-sm text-gray-200">
-                      Khám phá những kỳ quan của Trung Hoa Đại lục và đắm mình
-                      trong lịch sử cũng như ảnh hưởng toàn cầu của nơi này.
-                    </p>
-                    <a
-                      href="/schools"
-                      className="flex items-center text-white group-hover:text-secondary"
-                    >
-                      <b className="text-sm">Tìm hiểu thêm</b>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 ml-2"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </a>
+                <div className="flex-none w-full h-full relative rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300">
+                  <div
+                    className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-2xl mr-8 mt-8"
+                    style={{
+                      backgroundImage:
+                        "url('https://www.tripsavvy.com/thmb/hWOiXo0Vu_YA8HoBxSfns1n09qs=/3032x2048/filters:fill(auto,1)/opera-house-at-dawn-1154295605-81536fa4c4cc449e8bced26bdc517756.jpg')",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      height: 300,
+                    }}
+                  >
+                    <div className="py-32 p-8 absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent">
+                      <div className="space-y-2">
+                        <h5 className="text-xl font-bold text-black transition">
+                          Du học Úc
+                        </h5>
+                        <p className="text-sm text-gray-200">
+                          Nền giáo dục chất lượng, các
+                          trường đại học uy tín, môi trường học tập thân thiện,
+                          cơ hội thực tập, làm việc và đa dạng văn hóa, giúp
+                          sinh viên phát triển toàn diện.
+                        </p>
+                        <a
+                          href="/schools"
+                          className="flex items-center text-white group-hover:text-secondary"
+                        >
+                          <b className="text-sm">Tìm hiểu thêm</b>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 ml-2"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                {/* </div> */}
               </div>
             </div>
           </div>
@@ -285,249 +346,54 @@ export default function Home() {
               <h2 className="mt-4 text-2xl font-bold text-white md:text-4xl">
                 Tin tức
               </h2>
-              <h2 className="mt-4 text-2xl text-white md:text-2xl">
-                Không chỉ là du học, mà là một cuộc phiêu lưu không ngừng...
-              </h2>
+              <div className="flex flex-col md:flex-row justify-between space-y-4 md:space-y-0">
+                <h2 className="mt-4 text-2xl text-white md:text-2xl">
+                  Nắm bắt thông tin nhanh chóng...
+                </h2>
+                <a
+                  href="/news"
+                  className="flex items-center text-white group-hover:text-blue"
+                >
+                  <b className="text-sm">Xem thêm</b>
+                </a>
+              </div>
             </div>
-            <div className="mt-8 grid divide-x divide-y divide-gray-100 dark:divide-gray-700 overflow-hidden sm:grid-cols-2 lg:grid-cols-3 lg:divide-y-0 xl:grid-cols-3">
-              <div
-                className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-2xl mr-8 mt-8"
-                style={{
-                  backgroundImage:
-                    "url('https://www.busytourist.com/wp-content/uploads/2019/05/Gyeongbokgung-Palace.jpg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  height: 400,
-                }}
-              >
-                <div className="relative space-y-8 py-12 p-8">
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-black transition">
-                      Trường ở Hàn Quốc
-                    </h5>
-                    <p className="text-sm text-gray-100">
-                      Khi bạn du học tại Hàn Quốc, bạn có thể hoàn thành các
-                      khóa học từ kinh doanh, truyền thông và phương tiện truyền
-                      thông đến ngôn ngữ, văn hóa, triết học Hàn Quốc, v.v.
-                    </p>
-                    <a
-                      href="#"
-                      className="flex items-center text-white group-hover:text-primary"
-                    >
-                      <b className="text-sm">Tìm hiểu thêm</b>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 ml-2"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-2xl mr-8 mt-8"
-                style={{
-                  backgroundImage:
-                    "url('https://www.state.gov/wp-content/uploads/2019/04/Japan-2107x1406.jpg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  height: 400,
-                }}
-              >
-                <div className="relative space-y-8 py-12 p-8">
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-black transition ">
-                      Trường ở Nhật Bản
-                    </h5>
-                    <p className="text-sm text-gray-200">
-                      Từ thủ đô hiện đại nhưng vẫn truyền thống Tokyo đến thủ đô
-                      văn hóa giàu đền chùa và quán trà Kyoto.
-                    </p>
-                    <a
-                      href="#"
-                      className="flex items-center text-white group-hover:text-secondary"
-                    >
-                      <b className="text-sm">Tìm hiểu thêm</b>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 ml-2"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-2xl mr-8 mt-8"
-                style={{
-                  backgroundImage:
-                    "url('https://img.dipont.com/2019/01/rdfz-renmin-beijing.jpg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  height: 400,
-                }}
-              >
-                <div className="relative space-y-8 py-12 p-8">
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-black transition">
-                      Trường ở Trung Quốc
-                    </h5>
-                    <p className="text-sm text-gray-200">
-                      Khám phá những kỳ quan của Trung Hoa Đại lục và đắm mình
-                      trong lịch sử cũng như ảnh hưởng toàn cầu của nơi này.
-                    </p>
-                    <a
-                      href=""
-                      className="flex items-center text-white group-hover:text-secondary"
-                    >
-                      <b className="text-sm">Tìm hiểu thêm</b>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 ml-2"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              {/* <div className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-3xl mr-8">
-                <div className="relative space-y-8 py-12 p-8">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/4341/4341134.png"
-                    className="w-12"
-                    width="512"
-                    height="512"
-                    alt="burger illustration"
-                  />
-
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-gray-700 dark:text-white transition group-hover:text-primary">
-                      School in China
-                    </h5>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                      nostrum.
-                    </p>
-                  </div>
-                  <a
-                    href=""
-                    className="flex items-center justify-between group-hover:text-primary"
+            <div className="mt-8 grid divide-x divide-y divide-gray-700 sm:grid-cols-2 lg:grid-cols-3 lg:divide-y-0 xl:grid-cols-3">
+              <div className="flex space-x-5 pb-4">
+                {news.map((news) => (
+                  <div
+                    key={(news as { id: string })?.id}
+                    className="flex-none w-full h-full relative rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"
                   >
-                    <span className="text-sm">Read more</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </a>
-                </div>
+                    <img
+                      src={(news as { image: string })?.image}
+                      alt=""
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent">
+                      <div className="absolute bottom-0 p-4 text-white">
+                        <h2 className="text-xl font-bold mb-2">
+                          {(news as { title: string })?.title}
+                        </h2>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm">
+                            {(news as { timeUp: string })?.timeUp}
+                          </span>
+                          <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                            <a
+                              href={`${(news as { link: string })?.link}`}
+                              // className="text-blue-400 hover:underline"
+                            >
+                              Đọc thêm
+                            </a>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-3xl mr-8">
-                <div className="relative space-y-8 py-12 p-8">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/4341/4341160.png"
-                    className="w-12"
-                    width="512"
-                    height="512"
-                    alt="burger illustration"
-                  />
-
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-gray-700 dark:text-white transition group-hover:text-primary">
-                      School in Japan
-                    </h5>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                      nostrum.
-                    </p>
-                  </div>
-                  <a
-                    href=""
-                    className="flex items-center justify-between group-hover:text-primary"
-                  >
-                    <span className="text-sm">Read more</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div> */}
-              {/* <div className="group relative bg-gray-50 dark:bg-gray-900 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-                <div className="relative space-y-8 py-12 p-8 transition duration-300 group-hover:bg-white dark:group-hover:bg-gray-800">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/4341/4341025.png"
-                    className="w-12"
-                    width="512"
-                    height="512"
-                    alt="burger illustration"
-                  />
-
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-gray-700 dark:text-white transition group-hover:text-primary">
-                      More features
-                    </h5>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                      nostrum.
-                    </p>
-                  </div>
-                  <a
-                    href=""
-                    className="flex items-center justify-between group-hover:text-primary"
-                  >
-                    <span className="text-sm">Read more</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>  */}
             </div>
           </div>
         </div>
@@ -540,250 +406,55 @@ export default function Home() {
               <h2 className="mt-4 text-2xl font-bold text-white md:text-4xl">
                 Bài chia sẻ
               </h2>
-              <h2 className="mt-4 text-2xl text-white md:text-2xl">
-                Không chỉ là du học, mà là một cuộc phiêu lưu không ngừng...
-              </h2>
+              <div className="flex flex-col md:flex-row justify-between space-y-4 md:space-y-0">
+                <h2 className="mt-4 text-2xl text-white md:text-2xl">
+                  Chia sẻ trải nghiệm và kinh nghiệm...
+                </h2>
+                <a
+                  href="/blogs"
+                  className="flex items-center text-white group-hover:text-blue"
+                >
+                  <b className="text-sm">Xem thêm</b>
+                </a>
+              </div>
             </div>
-            <div className="mt-8 grid divide-x divide-y divide-gray-100 dark:divide-gray-700 overflow-hidden sm:grid-cols-2 lg:grid-cols-3 lg:divide-y-0 xl:grid-cols-3">
-              <div
-                className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-2xl mr-8 mt-8"
-                style={{
-                  backgroundImage:
-                    "url('https://www.busytourist.com/wp-content/uploads/2019/05/Gyeongbokgung-Palace.jpg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  height: 400,
-                }}
-              >
-                <div className="relative space-y-8 py-12 p-8">
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-black transition">
-                      Trường ở Hàn Quốc
-                    </h5>
-                    <p className="text-sm text-gray-100">
-                      Khi bạn du học tại Hàn Quốc, bạn có thể hoàn thành các
-                      khóa học từ kinh doanh, truyền thông và phương tiện truyền
-                      thông đến ngôn ngữ, văn hóa, triết học Hàn Quốc, v.v.
-                    </p>
-                    <a
-                      href="/"
-                      className="flex items-center text-white group-hover:text-primary"
+            <section className="py-4 md:px-8" aria-label="Latest Blog Posts">
+              <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {blogs.map((blog) => (
+                    <div
+                      key={(blog as { id: string })?.id}
+                      className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform hover:scale-105"
                     >
-                      <b className="text-sm">Tìm hiểu thêm</b>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 ml-2"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                          clip-rule="evenodd"
+                      {(blog as { image: string })?.image ? (
+                        <img
+                          src={(blog as { image: string })?.image}
+                          alt=""
+                          className="w-full h-48 object-cover"
+                          loading="lazy"
                         />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-2xl mr-8 mt-8"
-                style={{
-                  backgroundImage:
-                    "url('https://www.state.gov/wp-content/uploads/2019/04/Japan-2107x1406.jpg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  height: 400,
-                }}
-              >
-                <div className="relative space-y-8 py-12 p-8">
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-black transition ">
-                      Trường ở Nhật Bản
-                    </h5>
-                    <p className="text-sm text-gray-200">
-                      Từ thủ đô hiện đại nhưng vẫn truyền thống Tokyo đến thủ đô
-                      văn hóa giàu đền chùa và quán trà Kyoto.
-                    </p>
-                    <a
-                      href="#"
-                      className="flex items-center text-white group-hover:text-secondary"
-                    >
-                      <b className="text-sm">Tìm hiểu thêm</b>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 ml-2"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-2xl mr-8 mt-8"
-                style={{
-                  backgroundImage:
-                    "url('https://img.dipont.com/2019/01/rdfz-renmin-beijing.jpg')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  height: 400,
-                }}
-              >
-                <div className="relative space-y-8 py-12 p-8">
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-black transition">
-                      Trường ở Trung Quốc
-                    </h5>
-                    <p className="text-sm text-gray-200">
-                      Khám phá những kỳ quan của Trung Hoa Đại lục và đắm mình
-                      trong lịch sử cũng như ảnh hưởng toàn cầu của nơi này.
-                    </p>
-                    <a
-                      href="#"
-                      className="flex items-center text-white group-hover:text-secondary"
-                    >
-                      <b className="text-sm">Tìm hiểu thêm</b>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 ml-2"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              {/* <div className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-3xl mr-8">
-                <div className="relative space-y-8 py-12 p-8">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/4341/4341134.png"
-                    className="w-12"
-                    width="512"
-                    height="512"
-                    alt="burger illustration"
-                  />
+                      ) : (
+                        <></>
+                      )}
 
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-gray-700 dark:text-white transition group-hover:text-primary">
-                      School in China
-                    </h5>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                      nostrum.
-                    </p>
-                  </div>
-                  <a
-                    href="#"
-                    className="flex items-center justify-between group-hover:text-primary"
-                  >
-                    <span className="text-sm">Read more</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </a>
+                      <div className="p-6">
+                        <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                          {(blog as { title: string })?.title}
+                        </h3>
+                        <div className="flex items-center text-gray-600 mb-2">
+                          <FaUser className="mr-2" />
+                          <span>{(blog as { user: string })?.user}</span>
+                        </div>
+                        <div className="flex items-center text-gray-600 mb-3">
+                          <FaCalendar className="mr-2" />
+                          <span>{(blog as { date: string })?.date}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <div className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10 rounded-3xl mr-8">
-                <div className="relative space-y-8 py-12 p-8">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/4341/4341160.png"
-                    className="w-12"
-                    width="512"
-                    height="512"
-                    alt="burger illustration"
-                  />
-
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-gray-700 dark:text-white transition group-hover:text-primary">
-                      School in Japan
-                    </h5>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                      nostrum.
-                    </p>
-                  </div>
-                  <a
-                    href="#"
-                    className="flex items-center justify-between group-hover:text-primary"
-                  >
-                    <span className="text-sm">Read more</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div> */}
-              {/* <div className="group relative bg-gray-50 dark:bg-gray-900 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-                <div className="relative space-y-8 py-12 p-8 transition duration-300 group-hover:bg-white dark:group-hover:bg-gray-800">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/4341/4341025.png"
-                    className="w-12"
-                    width="512"
-                    height="512"
-                    alt="burger illustration"
-                  />
-
-                  <div className="space-y-2">
-                    <h5 className="text-xl font-medium text-gray-700 dark:text-white transition group-hover:text-primary">
-                      More features
-                    </h5>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      Neque Dolor, fugiat non cum doloribus aperiam voluptates
-                      nostrum.
-                    </p>
-                  </div>
-                  <a
-                    href="#"
-                    className="flex items-center justify-between group-hover:text-primary"
-                  >
-                    <span className="text-sm">Read more</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>  */}
-            </div>
+            </section>
           </div>
         </div>
       </div>
