@@ -5,12 +5,19 @@ import { FiUsers, FiBriefcase, FiPieChart, FiSearch, FiMenu, FiX, FiBookOpen, Fi
 import { BsArrowLeftShort } from "react-icons/bs";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LineChart, Line, PieChart, Pie, Cell } from "recharts";
 import Image from 'next/image';
+import { useRouter } from "next/navigation";
 const AdminUser = lazy(() => import("@/components/admin/user"));
 const AdminSchool = lazy(() => import("@/components/admin/school"));
 const AdminNews = lazy(() => import("@/components/admin/news"));
 const AdminBlog = lazy(() => import("@/components/admin/blog"));
 
 const AdminDashboard = () => {
+  const router = useRouter();
+  const handleLogout = () => {
+    // setUserInfo(null);
+    localStorage.removeItem("userInfo");
+    router.push("/login");
+  };
   const [activeSection, setActiveSection] = useState("dashboard");
   const [isMenuOpen, setIsMenuOpen] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -269,7 +276,15 @@ const AdminDashboard = () => {
               key={menu.id}
               className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-gray-300 text-sm items-center gap-x-4 mt-2
                 ${menu.id === activeSection && "bg-gray-700"}`}
-              onClick={() => setActiveSection(menu.id)}
+                onClick={() => {
+                  if (menu.id === "logout") {
+                    // Perform logout action
+                    handleLogout();
+                  } else {
+                    // Update the active section
+                    setActiveSection(menu.id);
+                  }
+                }}
             >
               <span className="text-2xl">{menu.icon}</span>
               <span className={`${!isMenuOpen && "hidden"} origin-left duration-200`}>{menu.label}</span>
